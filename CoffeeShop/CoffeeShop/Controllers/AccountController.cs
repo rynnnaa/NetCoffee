@@ -1,4 +1,5 @@
 ﻿using CoffeeShop.Models;
+using CoffeeShop.Models.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
