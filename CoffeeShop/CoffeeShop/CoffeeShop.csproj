@@ -6,15 +6,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Views\Account\**" />
-    <Content Remove="Views\Account\**" />
-    <EmbeddedResource Remove="Views\Account\**" />
-    <None Remove="Views\Account\**" />
+    <Compile Remove="Views\Home\**" />
+    <Content Remove="Views\Home\**" />
+    <EmbeddedResource Remove="Views\Home\**" />
+    <None Remove="Views\Home\**" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
   </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JSONSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>
