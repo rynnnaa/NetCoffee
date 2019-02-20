@@ -14,5 +14,4 @@ namespace CoffeeShop.Data
         }
 
     }
-    }
 }
