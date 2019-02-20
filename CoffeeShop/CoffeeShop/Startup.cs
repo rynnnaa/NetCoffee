@@ -32,10 +32,10 @@ namespace CoffeeShop
                 .AddDefaultTokenProviders();
 
             services.AddDbContext<ApplicationDbContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            options.UseSqlServer(Configuration.GetConnectionString("IdentityDefaultConnection")));
 
             services.AddDbContext<CoffeeShopDbContext>(options =>
-           options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+           options.UseSqlServer(Configuration.GetConnectionString("CoffeeShopConnectionString")));
         }
 
     }
