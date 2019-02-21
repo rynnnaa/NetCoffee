@@ -29,7 +29,7 @@ namespace CoffeeShop
             services.AddMvc();
 
             services.AddDbContext<CoffeeShopDbContext>(options =>
-            options.UseSqlServer(Configuration["ConnectionStrings:ProductionConnection"]));
+            options.UseSqlServer(Configuration["ConnectionStrings:ProductionConnection"])); // new connection string
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
