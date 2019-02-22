@@ -29,5 +29,9 @@ namespace CoffeeShop.Models.ViewModels
         [DataType(DataType.Password)]
         [Compare("Password", ErrorMessage = "The password and confirmation do not match")]
         public string ConfirmPassword { get; set; }
+        [Required]
+        public string State { get; set; }
+        [Required]
+        public string FavoriteCoffee { get; set; }
     }
 }

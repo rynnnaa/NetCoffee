@@ -47,7 +47,9 @@ namespace CoffeeShop.Controllers
                     Email = rvm.Email,
                     FirstName = rvm.FirstName,
                     LastName = rvm.LastName,
-                    Birthday = rvm.Birthday
+                    Birthday = rvm.Birthday,
+                    State = rvm.State,
+                    FavoriteCoffee = rvm.FavoriteCoffee
                 };
 
                 var result = await _userManager.CreateAsync(user, rvm.Password);
@@ -61,7 +63,10 @@ namespace CoffeeShop.Controllers
 
                     Claim emailClaim = new Claim(ClaimTypes.Email, user.Email, ClaimValueTypes.Email);
 
-                    List<Claim> claims = new List<Claim> { fullNameClaim, birthdayClaim, emailClaim };
+                    Claim stateClaim = new Claim(ClaimTypes.StateOrProvince, user.State);
+
+                    Claim favoriteCoffee = new Claim("")
+                    List<Claim> claims = new List<Claim> { fullNameClaim, birthdayClaim, emailClaim, stateClaim };
 
                     await _userManager.AddClaimsAsync(user, claims);
 
