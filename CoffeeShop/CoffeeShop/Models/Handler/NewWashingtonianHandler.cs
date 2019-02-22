@@ -13,7 +13,7 @@ namespace CoffeeShop.Models.Handler
         {
             if (!context.User.HasClaim(c => c.Type == ClaimTypes.StateOrProvince))
             {
-                return Task.CompletedTask();
+                return Task.CompletedTask;
             }
 
             var washington = context.User.FindFirst(c => c.Type == ClaimTypes.StateOrProvince).Value;
