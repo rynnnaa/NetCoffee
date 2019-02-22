@@ -62,7 +62,7 @@ namespace CoffeeShop.Controllers
 
                     Claim emailClaim = new Claim(ClaimTypes.Email, user.Email, ClaimValueTypes.Email);
 
-                    Claim stateClaim = new Claim(ClaimTypes.StateOrProvince, user.State);
+                    Claim stateClaim = new Claim(ClaimTypes.StateOrProvince, user.State.ToString());
 
                     Claim favoriteCoffee = new Claim("FavoriteCoffee", user.FavoriteCoffee);
 
