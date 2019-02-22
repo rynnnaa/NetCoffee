@@ -1,10 +1,12 @@
 ﻿using CoffeeShop.Models;
 using CoffeeShop.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace CoffeeShop.Controllers
@@ -19,10 +21,14 @@ namespace CoffeeShop.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
         }
+
+
         /// <summary>
         /// Default Register Page
         /// </summary>
         /// <returns>Return the View of the Register Page</returns>
+        [AllowAnonymous]
+        [HttpGet]
         public IActionResult Register()
         {
             return View();
@@ -41,13 +47,30 @@ namespace CoffeeShop.Controllers
                     Email = rvm.Email,
                     FirstName = rvm.FirstName,
                     LastName = rvm.LastName,
-                    Birthday = rvm.Birthday
+                    Birthday = rvm.Birthday,
+                    State = rvm.State,
+                    FavoriteCoffee = rvm.FavoriteCoffee
                 };
 
                 var result = await _userManager.CreateAsync(user, rvm.Password);
 
                 if (result.Succeeded)
                 {
+                    Claim fullNameClaim = new Claim("FullName", $"{user.FirstName} {user.LastName}");
+
+                    Claim birthdayClaim = new Claim(ClaimTypes.DateOfBirth, new DateTime(user.Birthday.Year, user.Birthday.Month, user.Birthday.Day).ToString("u"),
+                        ClaimValueTypes.DateTime);
+
+                    Claim emailClaim = new Claim(ClaimTypes.Email, user.Email, ClaimValueTypes.Email);
+
+                    Claim stateClaim = new Claim(ClaimTypes.StateOrProvince, user.State);
+
+                    Claim favoriteCoffee = new Claim("FavoriteCoffee", user.FavoriteCoffee);
+
+                    List<Claim> claims = new List<Claim> { fullNameClaim, birthdayClaim, emailClaim, stateClaim };
+
+                    await _userManager.AddClaimsAsync(user, claims);
+
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Home");
                 }
