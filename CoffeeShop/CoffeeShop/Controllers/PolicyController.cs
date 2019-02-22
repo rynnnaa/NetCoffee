@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 
 namespace CoffeeShop.Controllers
 {
-    [Authorize(Policy = "Seattleite")]
     public class PolicyController : Controller
     {
         public IActionResult Index()
