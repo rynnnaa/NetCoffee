@@ -37,7 +37,7 @@ namespace CoffeeShop
             options.UseSqlServer(Configuration["ConnectionStrings:IdentityDefaultConnection"]));
 
             services.AddDbContext<CoffeeShopDbContext>(options =>
-            options.UseSqlServer(Configuration["ConnectionStrings:ProductionConnection"])); // new connection string
+            options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"])); // new connection string
         }
 
 
