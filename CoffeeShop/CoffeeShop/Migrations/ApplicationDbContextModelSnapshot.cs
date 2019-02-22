@@ -4,16 +4,14 @@ using CoffeeShop.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace CoffeeShop.Migrations.ApplicationDb
+namespace CoffeeShop.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190220195644_initial")]
-    partial class initial
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -38,6 +36,8 @@ namespace CoffeeShop.Migrations.ApplicationDb
 
                     b.Property<bool>("EmailConfirmed");
 
+                    b.Property<string>("FavoriteCoffee");
+
                     b.Property<string>("FirstName");
 
                     b.Property<string>("LastName");
@@ -59,6 +59,8 @@ namespace CoffeeShop.Migrations.ApplicationDb
                     b.Property<bool>("PhoneNumberConfirmed");
 
                     b.Property<string>("SecurityStamp");
+
+                    b.Property<string>("State");
 
                     b.Property<bool>("TwoFactorEnabled");
 

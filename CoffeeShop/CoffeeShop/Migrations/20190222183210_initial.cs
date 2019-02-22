@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace CoffeeShop.Migrations.ApplicationDb
+namespace CoffeeShop.Migrations
 {
     public partial class initial : Migration
     {
@@ -43,7 +43,9 @@ namespace CoffeeShop.Migrations.ApplicationDb
                     AccessFailedCount = table.Column<int>(nullable: false),
                     FirstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
-                    Birthday = table.Column<DateTime>(nullable: false)
+                    Birthday = table.Column<DateTime>(nullable: false),
+                    State = table.Column<string>(nullable: true),
+                    FavoriteCoffee = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
