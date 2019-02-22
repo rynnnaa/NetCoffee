@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using CoffeeShop.Data;
 using CoffeeShop.Models;
+using CoffeeShop.Models.Interfaces;
+using CoffeeShop.Models.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -38,6 +40,9 @@ namespace CoffeeShop
 
             services.AddDbContext<CoffeeShopDbContext>(options =>
             options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"])); // new connection string
+
+
+            services.AddScoped<IInventory, CoffeeManager>();
         }
 
 
