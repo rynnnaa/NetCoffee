@@ -65,7 +65,8 @@ namespace CoffeeShop.Controllers
 
                     Claim stateClaim = new Claim(ClaimTypes.StateOrProvince, user.State);
 
-                    Claim favoriteCoffee = new Claim("")
+                    Claim favoriteCoffee = new Claim("FavoriteCoffee", user.FavoriteCoffee);
+
                     List<Claim> claims = new List<Claim> { fullNameClaim, birthdayClaim, emailClaim, stateClaim };
 
                     await _userManager.AddClaimsAsync(user, claims);
