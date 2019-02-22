@@ -35,7 +35,6 @@ namespace CoffeeShop.Controllers
         }
 
         [HttpPost]
-
         public async Task<IActionResult> Register(RegisterViewModel rvm)
         {
             if (ModelState.IsValid)
