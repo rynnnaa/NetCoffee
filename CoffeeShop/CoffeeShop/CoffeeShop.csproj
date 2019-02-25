@@ -8,13 +8,9 @@
 
   <ItemGroup>
     <Compile Remove="Views\Home\**" />
-    <Compile Remove="Views\NewFolder\**" />
     <Content Remove="Views\Home\**" />
-    <Content Remove="Views\NewFolder\**" />
     <EmbeddedResource Remove="Views\Home\**" />
-    <EmbeddedResource Remove="Views\NewFolder\**" />
     <None Remove="Views\Home\**" />
-    <None Remove="Views\NewFolder\**" />
   </ItemGroup>
 
   <ItemGroup>

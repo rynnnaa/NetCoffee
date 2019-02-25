@@ -1,0 +1,11 @@
+﻿@model List<CoffeeShop.Models.Coffee>
+@using CoffeeShop.Models;
+
+@{
+    Layout = "_Layout";
+}
+
+@foreach (var coffee in Model)
+{
+    <h1>@coffee.Name</h1>
+}

@@ -9,18 +9,21 @@ namespace CoffeeShop.Models.Interfaces
     {
 
         // Create
-        
+        Task CreateCoffee(Coffee coffee);
 
         // Delete
-        Task DeleteAsync(int id);
-        
-        // Find
-        Task<Coffee> GetByID(int id);
+        Task DeleteCoffee(int id);
 
         // GetAll
         Task<List<Coffee>> GetAllCoffee();
 
-        // Save
-        Task SaveAsync(Coffee coffee);
+        // Read
+        Task<Coffee> GetCoffee(int? id);
+        Task<IEnumerable<Coffee>> GetCoffee();
+
+        bool CoffeeExists(int id);
+
+        //// Save
+        //Task SaveAsync(Coffee coffee);
     }
 }

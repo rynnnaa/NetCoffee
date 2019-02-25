@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using CoffeeShop.Data;
 using CoffeeShop.Models;
 using CoffeeShop.Models.Handler;
+using CoffeeShop.Models.Interfaces;
+using CoffeeShop.Models.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -47,6 +49,7 @@ namespace CoffeeShop
             });
 
             services.AddScoped<IAuthorizationHandler, NewWashingtonianHandler>();
+            services.AddScoped<IInventory, CoffeeManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
