@@ -36,7 +36,7 @@ namespace CoffeeShop.Data
                 new Coffee
                 {
                     ID = 3,
-                    Name = "Expresso",
+                    Name = "Espresso",
                     Description = "Is a full-flavored, concentrated form of coffee that is served in “shots.” It is made by forcing pressurized, hot water through very finely ground coffee beans.",
                     URL = "../coffee/expresso",
                     Price = 1.00m

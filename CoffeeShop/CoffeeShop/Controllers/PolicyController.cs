@@ -16,7 +16,7 @@ namespace CoffeeShop.Controllers
             return View();
         }
         [Authorize]
-        public IActionResult Seattlelite()
+        public IActionResult Washingtonian()
         {
             return View();
         }
