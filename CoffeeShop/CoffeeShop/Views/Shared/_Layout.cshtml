@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Razor Pages Sample</title>
+    <meta name="viewport" content="width=device-width" , initial-scale="1.0" />
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/css/materialize.css" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="~/css/stylesheet.css" rel="stylesheet" />
+    </environment>
+
+    <environment exclude="Development">
+        <link rel="stylesheet" href="~/css/materialize.css" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="~/css/stylesheet.css" rel="stylesheet" />
+    </environment>
+</head>
+<body>
+    <nav class="blue-grey darken-4">
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">NET Coffee</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <ul class="sidenav" id="mobile-demo">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Shop</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+    <div class="container">
+        <environment include="Development">
+            <script src="~/js/materialize.js"></script>
+            <script src="~/js/materialize.min.js"></script>
+        </environment>
+
+        <environment exclude="Development">
+            <script src="~/js/materialize.js"></script>
+            <script src="~/js/materialize.min.js"></script>
+        </environment>
+
+        @RenderSection("Scripts", required: false)
+    </div>
+    @RenderBody()
+</body>
+</html>
