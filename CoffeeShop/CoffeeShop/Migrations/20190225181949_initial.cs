@@ -44,7 +44,7 @@ namespace CoffeeShop.Migrations
                     FirstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
                     Birthday = table.Column<DateTime>(nullable: false),
-                    State = table.Column<string>(nullable: true),
+                    State = table.Column<int>(nullable: false),
                     FavoriteCoffee = table.Column<string>(nullable: true)
                 },
                 constraints: table =>

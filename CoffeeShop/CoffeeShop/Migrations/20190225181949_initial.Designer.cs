@@ -10,14 +10,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoffeeShop.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190222183210_initial")]
+    [Migration("20190225181949_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.0-rtm-35687")
+                .HasAnnotation("ProductVersion", "2.2.1-servicing-10028")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -62,7 +62,7 @@ namespace CoffeeShop.Migrations
 
                     b.Property<string>("SecurityStamp");
 
-                    b.Property<string>("State");
+                    b.Property<int>("State");
 
                     b.Property<bool>("TwoFactorEnabled");
 

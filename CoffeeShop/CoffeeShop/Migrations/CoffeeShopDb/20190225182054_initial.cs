@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace CoffeeShop.Migrations
+namespace CoffeeShop.Migrations.CoffeeShopDb
 {
-    public partial class coffeeflavors : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

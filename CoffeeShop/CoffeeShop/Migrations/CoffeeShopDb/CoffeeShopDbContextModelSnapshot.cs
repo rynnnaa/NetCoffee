@@ -3,16 +3,14 @@ using CoffeeShop.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace CoffeeShop.Migrations
+namespace CoffeeShop.Migrations.CoffeeShopDb
 {
     [DbContext(typeof(CoffeeShopDbContext))]
-    [Migration("20190222191834_coffeeflavors")]
-    partial class coffeeflavors
+    partial class CoffeeShopDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
