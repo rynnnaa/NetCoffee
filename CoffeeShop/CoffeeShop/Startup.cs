@@ -58,6 +58,7 @@ namespace CoffeeShop
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseHttpsRedirection();
 
             app.UseStaticFiles();
 
