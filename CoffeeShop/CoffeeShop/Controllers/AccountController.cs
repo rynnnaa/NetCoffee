@@ -72,10 +72,9 @@ namespace CoffeeShop.Controllers
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Home");
+
                 }
-
             }
-
             return View(rvm);
         }
 
