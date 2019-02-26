@@ -4,4 +4,14 @@
 
 we are home
 
-@await Component.InvokeAsync("Individual Product", 1);
+@await Component.InvokeAsync("Individual Product", Model);
+
+
+<h3>@Model</h3>
+<ul>
+    @foreach (var todo in Model)
+    {
+        <li>@Model.Name</li>
+        <li>@Model.Description</li>
+    }
+</ul>
