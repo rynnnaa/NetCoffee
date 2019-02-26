@@ -23,10 +23,12 @@
             <a href="#" class="brand-logo">NET Coffee</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="#">Home</a></li>
+                <li><a asp-action="../Home/Index">Home</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Shop</a></li>
                 <li><a href="#">Contact</a></li>
+                <li><a asp-action="/Account/Register">Register</a></li>
+                <li><a asp-action="/Account/Login">Login</a></li>
             </ul>
         </div>
     </nav>
@@ -36,6 +38,8 @@
         <li><a href="#">About</a></li>
         <li><a href="#">Shop</a></li>
         <li><a href="#">Contact</a></li>
+        <li><a asp-action="/Account/Register">Register</a></li>
+        <li><a asp-action="/Account/Login">Login</a></li>
     </ul>
     <div class="container">
         <environment include="Development">

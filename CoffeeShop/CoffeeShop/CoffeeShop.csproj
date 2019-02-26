@@ -7,19 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Views\Home\**" />
-    <Content Remove="Views\Home\**" />
-    <EmbeddedResource Remove="Views\Home\**" />
-    <None Remove="Views\Home\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Shared\" />
+    <Folder Include="Areas\" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JSONSchema="" /></VisualStudio></ProjectExtensions>
