@@ -16,13 +16,11 @@ namespace CoffeeShop.Models.Components
             _context = context;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync(int number)
+        public async Task<IViewComponentResult> InvokeAsync()
         {
-            var coffee = _context.c.OrderByDescending(a => a.ID)
-                .Take(number).ToList();
+            var coffee = _context.Coffee.OrderBy(a => a.ID)
+                .ToList();
             return View(coffee);
         }
-    }
-}
     }
 }
