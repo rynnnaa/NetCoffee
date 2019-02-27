@@ -11,10 +11,19 @@ namespace CoffeeShop.Controllers
 {
     public class PolicyController : Controller
     {
+        /// <summary>
+        /// Returns are index page for our policies
+        /// </summary>
+        /// <returns>View</returns>
         public IActionResult Index()
         {
             return View();
         }
+        
+        /// <summary>
+        /// You need to be authorized in order to view this page. 
+        /// </summary>
+        /// <returns></returns>
         [Authorize]
         public IActionResult Washingtonian()
         {

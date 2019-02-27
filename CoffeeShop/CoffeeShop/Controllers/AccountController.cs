@@ -16,6 +16,11 @@ namespace CoffeeShop.Controllers
         private UserManager<ApplicationUser> _userManager;
         private SignInManager<ApplicationUser> _signInManager;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="userManager"></param>
+        /// <param name="signInManager"></param>
         public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
         {
             _userManager = userManager;
@@ -34,6 +39,11 @@ namespace CoffeeShop.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Our Register Action that wil succesfully create a user. 
+        /// </summary>
+        /// <param name="rvm"></param>
+        /// <returns>View</returns>
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel rvm)
         {
@@ -77,12 +87,19 @@ namespace CoffeeShop.Controllers
             }
             return View(rvm);
         }
-
+        /// <summary>
+        /// Grabs the login View, and returns it back to the user. 
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult Login() => View();
-
+        
+        /// <summary>
+        /// Will create a Login session for the user. 
+        /// </summary>
+        /// <param name="lvm"></param>
+        /// <returns>View</returns>
         [HttpPost]
-
         public async Task<IActionResult> Login(LoginViewModel lvm)
         {
             if (ModelState.IsValid)
@@ -99,7 +116,10 @@ namespace CoffeeShop.Controllers
             return View(lvm);
         }
 
-
+        /// <summary>
+        /// Will succesfully sign out a user. 
+        /// </summary>
+        /// <returns>View</returns>
         [HttpGet]
         public async Task<IActionResult> Logout()
         {

@@ -11,10 +11,20 @@ namespace CoffeeShop.Models.Handler
     {
         private string _state;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="state"></param>
         public WashingtonianRequirement(string state)
         {
             _state = state;
         }
+        /// <summary>
+        /// Returns whether or not the task for our claim has been completed
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="requirement"></param>
+        /// <returns></returns>
         protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, WashingtonianRequirement requirement)
         {
             if (!context.User.HasClaim(c => c.Type == ClaimTypes.StateOrProvince))
