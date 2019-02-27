@@ -31,15 +31,3 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
-
-@{ 
-    var loginProviders = (await SignInManager.GetExternalAuthenticationSchemesAsync()).ToList();
-
-    if(loginProviders.Count > 0)
-    {
-        @foreach (var provider in loginProviders)
-        {
-            
-        }
-    }
-}
