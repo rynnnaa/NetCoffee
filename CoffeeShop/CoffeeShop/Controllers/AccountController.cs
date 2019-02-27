@@ -191,11 +191,6 @@ namespace CoffeeShop.Controllers
                 {
                     UserName = elvm.Email,
                     Email = elvm.Email,
-                    FirstName = elvm.FirstName,
-                    LastName = elvm.LastName,
-                    Birthday = elvm.Birthday,
-                    State = elvm.State,
-                    FavoriteCoffee = elvm.FavoriteCoffee
                 };
 
                 var result = await _userManager.CreateAsync(user);
@@ -204,18 +199,7 @@ namespace CoffeeShop.Controllers
                 {
                     Claim fullNameClaim = new Claim("FullName", $"{user.FirstName} {user.LastName}");
 
-                    Claim birthdayClaim = new Claim(ClaimTypes.DateOfBirth, new DateTime(user.Birthday.Year, user.Birthday.Month, user.Birthday.Day).ToString("u"),
-                        ClaimValueTypes.DateTime);
-
                     Claim emailClaim = new Claim(ClaimTypes.Email, user.Email, ClaimValueTypes.Email);
-
-                    Claim stateClaim = new Claim(ClaimTypes.StateOrProvince, user.State.ToString());
-
-                    Claim favoriteCoffee = new Claim("FavoriteCoffee", user.FavoriteCoffee);
-
-                    List<Claim> claims = new List<Claim> { fullNameClaim, birthdayClaim, emailClaim, stateClaim };
-
-                    await _userManager.AddClaimsAsync(user, claims);
 
                     result = await _userManager.AddLoginAsync(user, info);
 
