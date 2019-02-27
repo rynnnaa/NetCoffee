@@ -48,7 +48,7 @@ namespace CoffeeShop
                 options.AddPolicy("FromWashington", policy => policy.Requirements.Add(new WashingtonianRequirement("WA")));
             });
 
-            services.AddScoped<IAuthorizationHandler, NewWashingtonianHandler>();
+            services.AddScoped<IAuthorizationHandler, WashingtonianRequirement>();
             services.AddScoped<IInventory, CoffeeManager>();
         }
 

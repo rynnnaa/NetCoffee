@@ -1,7 +1,21 @@
-﻿@{
-    Layout = "_Layout";
-}
+﻿@using Microsoft.AspNetCore.Identity;
+@using CoffeeShop.Models;
+@inject SignInManager<ApplicationUser> SignInManager;
+@inject UserManager<ApplicationUser> UserManager;
 
-<div>
-    <h1>Welcome To NET Cafe.</h1>
-</div>
+
+    @{
+        Layout = "_Layout";
+    }
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <p>Welcome back, @User.Claims.First(name => name.Type == "FullName").Value</p>
+}
+else
+{
+    <div>
+        <p>Welcome To NET Cafe.</p>
+    </div>
+}
+    

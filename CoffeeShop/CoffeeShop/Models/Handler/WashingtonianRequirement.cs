@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace CoffeeShop.Models.Handler
 {
-    public class WashingtonianRequirement : Microsoft.AspNetCore.Authorization.AuthorizationHandler<WashingtonianRequirement>, IAuthorizationRequirement
+    public class WashingtonianRequirement : AuthorizationHandler<WashingtonianRequirement>, IAuthorizationRequirement
     {
         private string _state;
 

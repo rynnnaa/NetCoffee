@@ -98,5 +98,13 @@ namespace CoffeeShop.Controllers
             ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
             return View(lvm);
         }
+
+
+        [HttpGet]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
