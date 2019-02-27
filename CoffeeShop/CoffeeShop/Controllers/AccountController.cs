@@ -191,6 +191,8 @@ namespace CoffeeShop.Controllers
                 {
                     UserName = elvm.Email,
                     Email = elvm.Email,
+                    FirstName = elvm.firstName,
+                    LastName = elvm.lastName
                 };
 
                 var result = await _userManager.CreateAsync(user);
@@ -198,6 +200,7 @@ namespace CoffeeShop.Controllers
                 if (result.Succeeded)
                 {
                     Claim fullNameClaim = new Claim("FullName", $"{user.FirstName} {user.LastName}");
+                    await _userManager.AddClaimAsync(user, fullNameClaim);
 
                     Claim emailClaim = new Claim(ClaimTypes.Email, user.Email, ClaimValueTypes.Email);
 
