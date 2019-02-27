@@ -38,7 +38,7 @@ namespace CoffeeShop
                 .AddDefaultTokenProviders();
 
             services.AddDbContext<ApplicationDbContext>(options =>
-            options.UseSqlServer(Configuration["ConnectionStrings:IdentityDefaultConnection"]));
+            options.UseSqlServer(Configuration["ConnectionStrings:IdentityProductionConnection"]));
 
             services.AddDbContext<CoffeeShopDbContext>(options =>
             options.UseSqlServer(Configuration["ConnectionStrings:ProductionConnection"])); // new connection string
