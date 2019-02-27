@@ -22,18 +22,17 @@ namespace CoffeeShop.Controllers
         public async Task<IActionResult> Index()
         {
 
-           var all = await _context.GetAllCoffee();
+            var all = await _context.GetAllCoffee();
             return View(all);
         }
 
         public async Task<IActionResult> Details(int id)
         {
-            var coffee = await _context.GetCoffee();
+            var coffee = await _context.GetCoffee(id);
             if (coffee == null)
             {
                 return NotFound();
             }
-
             return View(coffee);
         }
 
