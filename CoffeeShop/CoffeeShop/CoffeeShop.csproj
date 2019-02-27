@@ -14,6 +14,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\Assets\americano.jpg" />
+    <None Include="wwwroot\Assets\cappucino.jpg" />
+    <None Include="wwwroot\Assets\coldBrew.jpg" />
+    <None Include="wwwroot\Assets\espresso.jpg" />
+    <None Include="wwwroot\Assets\flatWhite.jpg" />
+    <None Include="wwwroot\Assets\irishCoffee.jpg" />
+    <None Include="wwwroot\Assets\latte.jpg" />
+    <None Include="wwwroot\Assets\longBlack.jpg" />
+    <None Include="wwwroot\Assets\mocha.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
   </ItemGroup>

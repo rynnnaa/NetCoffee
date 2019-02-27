@@ -3,14 +3,16 @@ using CoffeeShop.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CoffeeShop.Migrations.CoffeeShopDb
 {
     [DbContext(typeof(CoffeeShopDbContext))]
-    partial class CoffeeShopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190227184517_thdfgfd")]
+    partial class thdfgfd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,7 +45,7 @@ namespace CoffeeShop.Migrations.CoffeeShopDb
                             Description = "Strong or bold coffee (sometimes espresso) mixed with scalded milk",
                             Name = "Latte",
                             Price = 4.00m,
-                            URL = "/Assets/latte.jpg"
+                            URL = ""
                         },
                         new
                         {
@@ -51,7 +53,7 @@ namespace CoffeeShop.Migrations.CoffeeShopDb
                             Description = "Is a type of coffee drink prepared by diluting an espresso with hot water, giving it a similar strength to, but different flavor from traditionally brewed coffee.",
                             Name = "Americano",
                             Price = 3.00m,
-                            URL = "/Assets/americano.jpg"
+                            URL = "https://get.pxhere.com/photo/coffee-cup-latte-dish-meal-food-produce-ceramic-drink-breakfast-coffee-cup-pastry-21080.jpg"
                         },
                         new
                         {
@@ -59,7 +61,7 @@ namespace CoffeeShop.Migrations.CoffeeShopDb
                             Description = "Is a full-flavored, concentrated form of coffee that is served in “shots.” It is made by forcing pressurized, hot water through very finely ground coffee beans.",
                             Name = "Espresso",
                             Price = 1.00m,
-                            URL = "/Assets/espresso.jpg"
+                            URL = "../coffee/expresso"
                         },
                         new
                         {
@@ -67,7 +69,7 @@ namespace CoffeeShop.Migrations.CoffeeShopDb
                             Description = "Goes through a brewing process to become better",
                             Name = "Cold Brew",
                             Price = 5.00m,
-                            URL = "/Assets/coldBrew.jpg"
+                            URL = "https://c.pxhere.com/photos/61/fb/drink_glass_cold_ice_milk-45602.jpg!d"
                         },
                         new
                         {
@@ -75,7 +77,7 @@ namespace CoffeeShop.Migrations.CoffeeShopDb
                             Description = "",
                             Name = "Machiatto",
                             Price = 3.50m,
-                            URL = "/Assets/macchiato.jpg"
+                            URL = "~Assets/macchiatto.jpg"
                         },
                         new
                         {
@@ -83,7 +85,7 @@ namespace CoffeeShop.Migrations.CoffeeShopDb
                             Description = "Like a caffe latte, it is typically one third espresso and two thirds steamed milk, but a portion of chocolate is added",
                             Name = "Mocha",
                             Price = 4.50m,
-                            URL = "/Assets/mocha.jpg"
+                            URL = "../coffee/mocha"
                         },
                         new
                         {
@@ -91,7 +93,7 @@ namespace CoffeeShop.Migrations.CoffeeShopDb
                             Description = " Is a cocktail consisting of hot coffee, Irish whiskey, and sugar, stirred, and topped with cream. The coffee is drunk through the cream.",
                             Name = "Irish Coffee",
                             Price = 7.00m,
-                            URL = "/Assets/irishCoffee.jpg"
+                            URL = "../coffee/irishcoffee"
                         },
                         new
                         {
@@ -99,7 +101,7 @@ namespace CoffeeShop.Migrations.CoffeeShopDb
                             Description = "It is similar to an Americano, but with a stronger aroma and taste. A long black is made by pouring a double-shot of espresso or ristretto over hot water",
                             Name = "Long Black",
                             Price = 3.75m,
-                            URL = "/Assets/longBlack.jpg"
+                            URL = "https://c.pxhere.com/images/51/03/d2bf98d676caea95894584536d75-1430487.jpg!d"
                         },
                         new
                         {
@@ -107,7 +109,7 @@ namespace CoffeeShop.Migrations.CoffeeShopDb
                             Description = "A flat white is a coffee drink consisting of espresso with microfoam It is comparable to a latte, but smaller in volume and with less microfoam",
                             Name = "Flat White",
                             Price = 5.75m,
-                            URL = "/Assets/flatWhite.jpg"
+                            URL = "../coffee/flatwhite"
                         },
                         new
                         {
@@ -115,7 +117,7 @@ namespace CoffeeShop.Migrations.CoffeeShopDb
                             Description = " cappuccino is an espresso-based coffee drink that originated in Italy, and is traditionally prepared with an espresso shot and steamed milk foam. Variations of the drink involve the use of cream instead of milk, and flavoring with cinnamon or chocolate powder",
                             Name = "Cappuccino",
                             Price = 4.00m,
-                            URL = "/Assets/cappucino.jpg"
+                            URL = "../coffee/cappuccino"
                         });
                 });
 #pragma warning restore 612, 618
