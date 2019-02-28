@@ -1,4 +1,9 @@
 ﻿@model CoffeeShop.Models.ViewModels.LoginViewModel
+@using Microsoft.AspNetCore.Identity;
+@using CoffeeShop.Models;
+
+@inject SignInManager<ApplicationUser> SignInManager
+
 
 <div class="row">
     <div class="col s4">
@@ -26,6 +31,5 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
-
 
 

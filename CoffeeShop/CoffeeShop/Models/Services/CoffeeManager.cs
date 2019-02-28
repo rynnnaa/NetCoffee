@@ -22,17 +22,29 @@ namespace CoffeeShop.Models.Services
             _context = context;
         }
 
+        /// <summary>
+        /// Adds a new coffee object to the database
+        /// </summary>
+        /// <param name="coffee"></param>
+        /// <returns>Saves changes</returns>
         public async Task CreateCoffee(Coffee coffee)
         {
             _context.Coffee.Add(coffee);
             await _context.SaveChangesAsync();
         }
-
+        /// <summary>
+        /// Returns a list of all coffee objects in our database.
+        /// </summary>
+        /// <returns></returns>
         public async Task<IEnumerable<Coffee>> GetCoffee()
         {
             return await _context.Coffee.ToListAsync();
         }
-
+        /// <summary>
+        /// Grabs ID of specific coffee object and deletes it.\
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task DeleteCoffee(int id)
         {
             Coffee coffee = await _context.Coffee.FindAsync(id);
@@ -42,13 +54,21 @@ namespace CoffeeShop.Models.Services
                 await _context.SaveChangesAsync();
             }
         }
-
+        /// <summary>
+        /// Returns one coffee object based on its ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<Coffee> GetCoffee(int id)
         {
             Coffee coffee = await _context.Coffee.FirstOrDefaultAsync(c => c.ID == id);
             return coffee;
         }
-
+        /// <summary>
+        /// Updates or Saves a new coffee object. 
+        /// </summary>
+        /// <param name="coffee"></param>
+        /// <returns></returns>
         public async Task SaveAsync(Coffee coffee)
         {
             if (await _context.Coffee.FirstOrDefaultAsync(c => c.ID == coffee.ID) == null)
@@ -62,7 +82,11 @@ namespace CoffeeShop.Models.Services
             }
             await _context.SaveChangesAsync();
         }
-
+        /// <summary>
+        // Edit and save a new coffee object
+        /// </summary>
+        /// <param name="coffee"></param>
+        /// <returns></returns>
         public async Task UpdateCoffee(Coffee coffee)
         {
             _context.Coffee.Update(coffee);
@@ -71,17 +95,28 @@ namespace CoffeeShop.Models.Services
         }
 
         //bool exists
-
+        /// <summary>
+        /// Returns a boolean, based on whether or not the coffee exist in our database. 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public bool CoffeeExists(int id)
         {
             return _context.Coffee.Any(a => a.ID == id);
         }
-
+        /// <summary>
+        /// Returns a coffee object
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<Coffee> GetCoffee(int? id)
         {
             return await _context.Coffee.FirstOrDefaultAsync(a => a.ID == id);
         }
-
+        /// <summary>
+        /// Returns a list of coffee objects. 
+        /// </summary>
+        /// <returns></returns>
         [HttpPost]
         public async Task<List<Coffee>> GetAllCoffee()
         {
