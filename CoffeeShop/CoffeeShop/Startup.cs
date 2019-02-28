@@ -47,11 +47,7 @@ namespace CoffeeShop
             {
                 options.AddPolicy("FromWashington", policy => policy.Requirements.Add(new WashingtonianRequirement("WA")));
             });
-            services.AddAuthentication().AddGoogle(google =>
-            {
-                google.ClientId = Configuration["Authentication:Google:ClientId"];
-                google.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
-            });
+
             services.AddScoped<IAuthorizationHandler, WashingtonianRequirement>();
             services.AddScoped<IInventory, CoffeeManager>();
         }
