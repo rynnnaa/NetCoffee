@@ -38,17 +38,17 @@ namespace CoffeeShop
                 .AddDefaultTokenProviders();
 
             services.AddDbContext<ApplicationDbContext>(options =>
-            options.UseSqlServer(Configuration["ConnectionStrings:IdentityDefaultConnection"]));
+            options.UseSqlServer(Configuration["ConnectionStrings:IdentityProductionConnection"]));
 
             services.AddDbContext<CoffeeShopDbContext>(options =>
-            options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"])); // new connection string
+            options.UseSqlServer(Configuration["ConnectionStrings:ProductionConnection"])); // new connection string
 
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("FromWashington", policy => policy.Requirements.Add(new WashingtonianRequirement("WA")));
             });
 
-            services.AddScoped<IAuthorizationHandler, NewWashingtonianHandler>();
+            services.AddScoped<IAuthorizationHandler, WashingtonianRequirement>();
             services.AddScoped<IInventory, CoffeeManager>();
 
             services.AddAuthentication().AddFacebook(facebookOptions =>

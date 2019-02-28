@@ -14,18 +14,29 @@ namespace CoffeeShop.Controllers
     {
         private IInventory _context;
 
+        /// <summary>
+        /// Constructor that grabs are db context. 
+        /// </summary>
+        /// <param name="context"></param>
         public ShoppingController(IInventory context)
         {
             _context = context;
         }
-
+        /// <summary>
+        /// Will Return all Coffee objects from our database
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> Index()
         {
 
             var all = await _context.GetAllCoffee();
             return View(all);
         }
-
+        /// <summary>
+        /// Will return details for a specific coffee id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Detils for one Coffee</returns>
         public async Task<IActionResult> Details(int id)
         {
             var coffee = await _context.GetCoffee(id);
@@ -35,12 +46,20 @@ namespace CoffeeShop.Controllers
             }
             return View(coffee);
         }
-
+        /// <summary>
+        /// Will return view to create a new coffee
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Create()
         {
             return View();
         }
 
+        /// <summary>
+        /// Creates a new Coffee object
+        /// </summary>
+        /// <param name="coffee"></param>
+        /// <returns>View for indivdual coffee</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ID,Name")] Coffee coffee)
@@ -54,7 +73,10 @@ namespace CoffeeShop.Controllers
             return View(coffee);
         }
 
-        // GET: Amenities/Edit/5
+       /// <summary>
+       /// Will bring you to the coffee view
+       /// <param name="id"></param>
+       /// <returns>View for individual coffee</returns>
         public async Task<IActionResult> Edit(int id)
         {
 
@@ -66,9 +88,12 @@ namespace CoffeeShop.Controllers
             return View(coffee);
         }
 
-        // POST: Amenities/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Allows you to edit a coffee object.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="coffee"></param>
+        /// <returns>Coffee Object</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("ID,Name")] Coffee coffee)
@@ -108,8 +133,6 @@ namespace CoffeeShop.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns>delete view</returns>
-
-        // GET: Amenities/Delete/5
         public async Task<IActionResult> Delete(int id)
         {
 
