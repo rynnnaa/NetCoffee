@@ -127,98 +127,98 @@ namespace CoffeeShop.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        //[HttpPost]
-        //public IActionResult ExternalLogin(string provider)
-        //{
-        //    var redirectUrl = Url.Action(nameof(ExternalLoginCallback), "Account");
-        //    var properties = _signInManager.ConfigureExternalAuthenticationProperties(provider, redirectUrl);
+        [HttpPost]
+        public IActionResult ExternalLogin(string provider)
+        {
+            var redirectUrl = Url.Action(nameof(ExternalLoginCallback), "Account");
+            var properties = _signInManager.ConfigureExternalAuthenticationProperties(provider, redirectUrl);
 
-        //    return Challenge(properties, provider);
-        //}
+            return Challenge(properties, provider);
+        }
 
-        //[HttpGet]
+        [HttpGet]
 
-        //public async Task<IActionResult> ExternalLoginCallback(string error = null)
-        //{
-        //    // If there is an error message, send them away
-        //    if (error != null)
-        //    {
-        //        // logging of the error coming in
-        //        TempData["Error"] = "Error with Provider";
-        //        return RedirectToAction("Login");
-        //    }
+        public async Task<IActionResult> ExternalLoginCallback(string error = null)
+        {
+            // If there is an error message, send them away
+            if (error != null)
+            {
+                // logging of the error coming in
+                TempData["Error"] = "Error with Provider";
+                return RedirectToAction("Login");
+            }
 
-        //    // see if our web app supports the login provider
-        //    var info = await _signInManager.GetExternalLoginInfoAsync();
+            // see if our web app supports the login provider
+            var info = await _signInManager.GetExternalLoginInfoAsync();
 
-        //    // If the web app does not support the provider, make them login with a different technique.
-        //    if (info == null)
-        //    {
-        //        return RedirectToAction(nameof(Login));
-        //    }
+            // If the web app does not support the provider, make them login with a different technique.
+            if (info == null)
+            {
+                return RedirectToAction(nameof(Login));
+            }
 
-        //    // login with the external provider given the info from our sign in manager
-        //    var result = await _signInManager.ExternalLoginSignInAsync(info.LoginProvider, info.ProviderKey, isPersistent: false, bypassTwoFactor: true);
+            // login with the external provider given the info from our sign in manager
+            var result = await _signInManager.ExternalLoginSignInAsync(info.LoginProvider, info.ProviderKey, isPersistent: false, bypassTwoFactor: true);
 
-        //    // redirect them home if the login was a success
-        //    if (result.Succeeded)
-        //    {
-        //        return RedirectToAction("Index", "Home");
-        //    }
+            // redirect them home if the login was a success
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Index", "Home");
+            }
 
-        //    //get the email if this is the first time
-        //    var email = info.Principal.FindFirstValue(ClaimTypes.Email);
+            //get the email if this is the first time
+            var email = info.Principal.FindFirstValue(ClaimTypes.Email);
 
-        //    //redirect to the external login page for the user to 
-        //    return View("ExternalLogin", new ExternalLoginViewModel { Email = email });
+            //redirect to the external login page for the user to 
+            return View("ExternalLogin", new ExternalLoginViewModel { Email = email });
 
-        //}
+        }
 
-        //[HttpPost]
-        //[AllowAnonymous]
-        //public async Task<IActionResult> ExternalLoginConfirmation(ExternalLoginViewModel elvm)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var info = await _signInManager.GetExternalLoginInfoAsync();
-        //        if (info == null)
-        //        {
-        //            TempData["Error"] = "Error loading information";
-        //        }
-
-
-        //        var user = new ApplicationUser()
-        //        {
-        //            UserName = elvm.Email,
-        //            Email = elvm.Email,
-        //            FirstName = elvm.firstName,
-        //            LastName = elvm.lastName
-        //        };
-
-        //        var result = await _userManager.CreateAsync(user);
-
-        //        if (result.Succeeded)
-        //        {
-        //            Claim fullNameClaim = new Claim("FullName", $"{user.FirstName} {user.LastName}");
-        //            await _userManager.AddClaimAsync(user, fullNameClaim);
-
-        //            Claim emailClaim = new Claim(ClaimTypes.Email, user.Email, ClaimValueTypes.Email);
-
-        //            result = await _userManager.AddLoginAsync(user, info);
-
-        //            if (result.Succeeded)
-        //            {
-        //                // sign the user in with the information they gave us
-        //                await _signInManager.SignInAsync(user, isPersistent: false);
-
-        //                return RedirectToAction("Index", "Home");
-
-        //            }
-        //        }
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> ExternalLoginConfirmation(ExternalLoginViewModel elvm)
+        {
+            if (ModelState.IsValid)
+            {
+                var info = await _signInManager.GetExternalLoginInfoAsync();
+                if (info == null)
+                {
+                    TempData["Error"] = "Error loading information";
+                }
 
 
-        //    }
-        //    return View(elvm);
-        //}
+                var user = new ApplicationUser()
+                {
+                    UserName = elvm.Email,
+                    Email = elvm.Email,
+                    FirstName = elvm.firstName,
+                    LastName = elvm.lastName
+                };
+
+                var result = await _userManager.CreateAsync(user);
+
+                if (result.Succeeded)
+                {
+                    Claim fullNameClaim = new Claim("FullName", $"{user.FirstName} {user.LastName}");
+                    await _userManager.AddClaimAsync(user, fullNameClaim);
+
+                    Claim emailClaim = new Claim(ClaimTypes.Email, user.Email, ClaimValueTypes.Email);
+
+                    result = await _userManager.AddLoginAsync(user, info);
+
+                    if (result.Succeeded)
+                    {
+                        // sign the user in with the information they gave us
+                        await _signInManager.SignInAsync(user, isPersistent: false);
+
+                        return RedirectToAction("Index", "Home");
+
+                    }
+                }
+
+
+            }
+            return View("ExternalLogin", elvm);
+        }
     }
 }
