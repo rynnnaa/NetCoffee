@@ -36,7 +36,8 @@ namespace CoffeeShop
             services.AddMvc();
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
+                .AddDefaultTokenProviders()
+                .AddDefaultUI(UIFramework.Bootstrap4);
 
             services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(Configuration["ConnectionStrings:IdentityProductionConnection"]));
@@ -49,9 +50,8 @@ namespace CoffeeShop
                 options.AddPolicy("FromWashington", policy => policy.Requirements.Add(new WashingtonianRequirement("WA")));
             });
 
-            services.AddDefaultIdentity<IdentityUser>()
-        .AddDefaultUI(UIFramework.Bootstrap4)
-        .AddEntityFrameworkStores<ApplicationDbContext>();
+
+
 
             services.AddAuthentication().AddMicrosoftAccount(microsoftOptions =>
             {
