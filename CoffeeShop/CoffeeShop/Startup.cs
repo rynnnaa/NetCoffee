@@ -36,14 +36,14 @@ namespace CoffeeShop
             services.AddMvc();
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders()
-                .AddDefaultUI(UIFramework.Bootstrap4);
+                .AddDefaultTokenProviders();
+                //.AddDefaultUI(UIFramework.Bootstrap4);
 
             services.AddDbContext<ApplicationDbContext>(options =>
-            options.UseSqlServer(Configuration["ConnectionStrings:IdentityProductionConnection"]));
+            options.UseSqlServer(Configuration["ConnectionStrings:IdentityDefaultConnection"]));
 
             services.AddDbContext<CoffeeShopDbContext>(options =>
-            options.UseSqlServer(Configuration["ConnectionStrings:ProductionConnection"])); // new connection string
+            options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"])); // new connection string
 
             services.AddAuthorization(options =>
             {
