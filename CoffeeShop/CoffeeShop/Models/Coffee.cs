@@ -16,5 +16,6 @@ namespace CoffeeShop.Models
         public string URL { get; set; }
 
         public decimal Price { get; set; }
+        
     }
 }

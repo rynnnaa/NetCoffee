@@ -61,6 +61,8 @@ namespace CoffeeShop
 
             services.AddScoped<IAuthorizationHandler, WashingtonianRequirement>();
             services.AddScoped<IInventory, CoffeeManager>();
+            services.AddTransient<IProduct, ProductManager>();
+            services.AddTransient<ICart, CartManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

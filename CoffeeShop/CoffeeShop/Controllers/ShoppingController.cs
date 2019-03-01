@@ -18,7 +18,7 @@ namespace CoffeeShop.Controllers
         /// Constructor that grabs are db context. 
         /// </summary>
         /// <param name="context"></param>
-        public ShoppingController(IInventory context)
+        public ShoppingController(IInventory context) 
         {
             _context = context;
         }

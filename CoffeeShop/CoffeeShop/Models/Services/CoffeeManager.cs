@@ -13,7 +13,7 @@ namespace CoffeeShop.Models.Services
     public class CoffeeManager : IInventory
     {
         private readonly CoffeeShopDbContext _context;
-        private object coffee;
+        
 
         public object ModelState { get; private set; }
 
