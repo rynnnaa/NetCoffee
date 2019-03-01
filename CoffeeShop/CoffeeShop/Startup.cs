@@ -37,8 +37,7 @@ namespace CoffeeShop
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
-                //.AddDefaultUI(UIFramework.Bootstrap4);
-
+                
             services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(Configuration["ConnectionStrings:IdentityDefaultConnection"]));
 
