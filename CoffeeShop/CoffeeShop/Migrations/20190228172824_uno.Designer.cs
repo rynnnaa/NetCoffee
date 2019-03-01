@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoffeeShop.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190227002717_segundo")]
-    partial class segundo
+    [Migration("20190228172824_uno")]
+    partial class uno
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

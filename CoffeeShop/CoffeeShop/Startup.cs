@@ -38,10 +38,10 @@ namespace CoffeeShop
                 .AddDefaultTokenProviders();
 
             services.AddDbContext<ApplicationDbContext>(options =>
-            options.UseSqlServer(Configuration["ConnectionStrings:IdentityProductionConnection"]));
+            options.UseSqlServer(Configuration["ConnectionStrings:IdentityDefaultConnection"]));
 
             services.AddDbContext<CoffeeShopDbContext>(options =>
-            options.UseSqlServer(Configuration["ConnectionStrings:ProductionConnection"])); // new connection string
+            options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"])); // new connection string
 
             services.AddAuthorization(options =>
             {
@@ -50,6 +50,8 @@ namespace CoffeeShop
 
             services.AddScoped<IAuthorizationHandler, WashingtonianRequirement>();
             services.AddScoped<IInventory, CoffeeManager>();
+            services.AddTransient<IProduct, ProductManager>();
+            services.AddTransient<ICart, CartManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

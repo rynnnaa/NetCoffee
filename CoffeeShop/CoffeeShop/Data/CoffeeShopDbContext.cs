@@ -99,8 +99,9 @@ namespace CoffeeShop.Data
                 }
                 );
         }
-
+        public DbSet<Cart> Carts { get; set; }
         public DbSet<Coffee> Coffee { get; set; }
+        public DbSet<Product> Products { get; set; }
 
     }
 }

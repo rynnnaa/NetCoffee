@@ -1,4 +1,6 @@
-﻿using CoffeeShop.Models;
+﻿using CoffeeShop.Data;
+using CoffeeShop.Models;
+using CoffeeShop.Models.Interfaces;
 using CoffeeShop.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -15,16 +17,20 @@ namespace CoffeeShop.Controllers
     {
         private UserManager<ApplicationUser> _userManager;
         private SignInManager<ApplicationUser> _signInManager;
+        private readonly ICart _context;
+        private readonly ApplicationDbContext _user;
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="userManager"></param>
         /// <param name="signInManager"></param>
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ICart context, ApplicationDbContext user)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _context = context;
+            _user = user;
         }
 
 

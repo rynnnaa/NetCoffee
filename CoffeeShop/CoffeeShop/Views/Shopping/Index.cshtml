@@ -1,11 +1,18 @@
 ﻿@model List<CoffeeShop.Models.Coffee>
 @using CoffeeShop.Models;
 
+
 @{
     Layout = "_Layout";
 }
-
-@foreach (var coffee in Model)
-{
-    <h1>@coffee.Name</h1>
-}
+<div class="container center-align">
+    @foreach (var coffee in Model)
+    {
+    <div class="card">
+        <img src="@Html.DisplayFor(itemPicture => coffee.URL)" class="card" />
+    </div>
+        
+    }
+</div>
+  
+    
