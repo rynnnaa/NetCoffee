@@ -1,4 +1,5 @@
 ﻿using AuthorizeNet.Api.Contracts.V1;
+using AuthorizeNet.Api.Controllers;
 using AuthorizeNet.Api.Controllers.Bases;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -59,6 +60,19 @@ namespace CoffeeShop.Models
                 payment = paymentType,
                 billTo = billingAddress,
             };
+
+            createTransactionRequest request = new createTransactionRequest
+            {
+                transactionRequest = transactionRequest
+            };
+
+            // make call to AUth.NET with the requset that was created
+            var controller = new createTransactionController(request);
+            // execute the call
+            controller.Execute();
+
+            //reseponse call we made above
+            var response = controller.GetApiResponse();
 
         }
         /// <summary>
