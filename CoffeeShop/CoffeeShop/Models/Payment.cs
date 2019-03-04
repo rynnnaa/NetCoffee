@@ -36,16 +36,37 @@ namespace CoffeeShop.Models
             };
 
             // Create CC.
-           
+
             var creditCard = new creditCardType
             {
                 cardNumber = "4111111111111111",
                 expirationDate = "1120"
             };
 
-
+            customerAddressType billingAddress = GetAddress();
             return " it works";
         }
+        /// <summary>
+        /// address of user
+        /// bring in user as parameter
+        /// bring in user id? ...maybe...
+        /// </summary>
+        /// <returns> address</returns>
+        private customerAddressType GetAddress()
+        {
+           
+            customerAddressType address = new customerAddressType()
+            {
+
+                firstName = "Donkey",
+                lastName = "Kong",
+                address = "123 Donkey lane",
+                city = "New York",
+                zip = "08069"
+            };
+            return address;
+        }
+
     }
 }
 
