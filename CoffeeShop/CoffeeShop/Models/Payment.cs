@@ -74,7 +74,27 @@ namespace CoffeeShop.Models
             //reseponse call we made above
             var response = controller.GetApiResponse();
 
+            if (response != null)
+            {
+                if (response.messages.resultCode == messageTypeEnum.Ok)
+                {
+                    if (response.transactionResponse != null)
+                    {                       
+                       Console.WriteLine("Success");                       
+                    }
+                }
+                else
+                {
+                    if (response.transactionResponse != null)
+                    {
+                        Console.WriteLine("Transaction Error");
+                    }
+                }
+            }
+
+            return "Error";
         }
+
         /// <summary>
         /// address of user
         /// bring in user as parameter
@@ -83,7 +103,7 @@ namespace CoffeeShop.Models
         /// <returns> address</returns>
         private customerAddressType GetAddress()
         {
-           
+
             customerAddressType address = new customerAddressType()
             {
 
@@ -96,6 +116,30 @@ namespace CoffeeShop.Models
             return address;
         }
 
+        /// <summary>
+        /// gets line item list and the count of the items.
+        /// </summary>
+        /// <param name="products"></param>
+        /// <returns> line item </returns>
+        private lineItemType[] GetLineItemTypes(List<Coffee> products)
+        {
+            lineItemType[] lineitems = new lineItemType[products.Count];
+            int count = 0;
+
+            foreach (var prod in products)
+            {
+                lineitems[count] = new lineItemType
+                {
+                    itemId = "1",
+                    name = " product name",
+                    quantity = 11,
+                    unitPrice = new Decimal(5.00)
+                };
+                count++;
+            }
+                return lineitems;
+        }
     }
+       
 }
 
