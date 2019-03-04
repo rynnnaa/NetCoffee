@@ -8,9 +8,13 @@
 
   <ItemGroup>
     <Compile Remove="Views\Home\**" />
+    <Compile Remove="Views\Homr\**" />
     <Content Remove="Views\Home\**" />
+    <Content Remove="Views\Homr\**" />
     <EmbeddedResource Remove="Views\Home\**" />
+    <EmbeddedResource Remove="Views\Homr\**" />
     <None Remove="Views\Home\**" />
+    <None Remove="Views\Homr\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,6 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AuthorizeNet" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.MicrosoftAccount" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
