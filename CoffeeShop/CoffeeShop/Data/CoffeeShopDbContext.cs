@@ -53,7 +53,7 @@ namespace CoffeeShop.Data
                 {
                     ID = 5,
                     Name = "Machiatto",
-                    Description = "" ,
+                    Description = " It's basically an espresso (served in a demitasse cup) with a small amount of foamed milk on top -- the name macchiato means marked",
                     URL = "/Assets/macchiato.jpg",
                     Price = 3.50m,
                 },

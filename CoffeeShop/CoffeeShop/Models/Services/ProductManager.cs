@@ -44,9 +44,9 @@ namespace CoffeeShop.Models.Services
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<IEnumerable<Product>> GetAllProducts(int id)
+        public async Task<IEnumerable<Product>> GetAllProducts()
         {
-            return await _context.Products.ToListAsync();
+            return await _context.Products.Include(item => item.Coffee).ToListAsync();
         }
 
         /// <summary>

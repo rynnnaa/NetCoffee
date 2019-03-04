@@ -4,14 +4,16 @@ using CoffeeShop.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CoffeeShop.Migrations.CoffeeShopDb
 {
     [DbContext(typeof(CoffeeShopDbContext))]
-    partial class CoffeeShopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190304010223_quatro")]
+    partial class quatro
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,8 +26,6 @@ namespace CoffeeShop.Migrations.CoffeeShopDb
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("Taken");
 
                     b.Property<string>("UserID");
 
@@ -162,7 +162,7 @@ namespace CoffeeShop.Migrations.CoffeeShopDb
             modelBuilder.Entity("CoffeeShop.Models.Product", b =>
                 {
                     b.HasOne("CoffeeShop.Models.Cart", "Cart")
-                        .WithMany("Product")
+                        .WithMany("Products")
                         .HasForeignKey("CartID")
                         .OnDelete(DeleteBehavior.Cascade);
 

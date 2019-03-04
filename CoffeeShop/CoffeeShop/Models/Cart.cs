@@ -9,9 +9,9 @@ namespace CoffeeShop.Models
     {
         public int ID { get; set; }
         public string UserID { get; set; }
-        public List<Product> Products {get; set; }
-        
- 
-        // Nav prop;
+        public bool Taken { get; set; }
+
+         // Nav prop;
+         public List<Product> Product { get; set; }
     }
 }

@@ -5,14 +5,31 @@
 @{
     Layout = "_Layout";
 }
-<div class="container center-align">
-    @foreach (var coffee in Model)
-    {
-    <div class="card">
-        <img src="@Html.DisplayFor(itemPicture => coffee.URL)" class="card" />
+<div class="container">
+    <div class="row">
+
+        @foreach (var coffee in Model)
+        {
+            <div class="card medium col l4 m4 s12">
+                
+                    <div class="card-image responsive-img">
+                        <img src="@Html.DisplayFor(itemPicture => coffee.URL)" class="activator">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title">@Html.DisplayFor(itemName => coffee.Name)</span>
+                        <span>Price @coffee.Price</span>
+                        <div class="card-action">
+                            <a asp-action="Details" asp-route-id="@coffee.ID" class="black-text">More Details</a>
+                        </div>
+                    </div>
+                    <div class="card-reveal">
+                       <span class="card-title grey-text text-darken-4">@Html.DisplayFor(itemName => coffee.Name)</span>
+                        <span>@coffee.Description</span>
+                    </div>
+                
+            </div>
+        }
+
     </div>
-        
-    }
 </div>
-  
-    
+

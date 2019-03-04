@@ -20,7 +20,7 @@ namespace CoffeeShop.Models.Interfaces
         Task<Product> GetAProduct(int? id);
 
         // Get all products
-        Task<IEnumerable<Product>> GetAllProducts(int id);
+        Task<IEnumerable<Product>> GetAllProducts();
 
         
     }

@@ -31,12 +31,12 @@ namespace CoffeeShop.Models.Services
 
         public async Task<Cart> GetACart(int? id)
         {
-            return await _context.Carts.Include(c => c.Products).FirstOrDefaultAsync(c => c.ID == id);
+            return await _context.Carts.Include(c => c.Product).FirstOrDefaultAsync(c => c.ID == id);
         }
 
         public async Task<IEnumerable<Cart>> GetAllCarts()
         {
-            return await _context.Carts.Include(c => c.Products).ToListAsync();
+            return await _context.Carts.Include(c => c.Product).ToListAsync();
         }
 
         public async Task UpdateACart(Cart cart)

@@ -5,10 +5,30 @@
     Layout = "_Layout";
 }
 
+<div class="container">
 
-<div>
-    <img src="@Model.URL" />
+</div>
+<div class="container">
+    <!--<img src="@Model.URL" />
     <h2>@Model.Name</h2>
     <p>@Model.Description</p>
-    <p>$@Model.Price</p>
+    <p>$@Model.Price</p> -->
+    <div class="card">
+        <div class="card-image medium center">
+            <img class="responsive-img" src="@Model.URL" />
+            <div class="card-content">
+                <h3>@Model.Name</h3>
+                <span>@Model.Description</span>
+                <h5>$@Model.Price </h5>
+            </div>
+            <form asp-action="Create" method="post">
+                <button  type="submit" class="btn-large grey darken-4">Add To Cart</button>
+            </form>
+
+        </div>
+    </div>
+
+</div>
+<div class="center-align">
+    <a asp-action="Index">Back To List</a>
 </div>

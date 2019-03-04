@@ -4,6 +4,7 @@ using CoffeeShop.Models.Interfaces;
 using CoffeeShop.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -19,18 +20,20 @@ namespace CoffeeShop.Controllers
         private SignInManager<ApplicationUser> _signInManager;
         private readonly ICart _context;
         private readonly ApplicationDbContext _user;
+        private readonly IEmailSender _emailSender;
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="userManager"></param>
         /// <param name="signInManager"></param>
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ICart context, ApplicationDbContext user)
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ICart context, ApplicationDbContext user, IEmailSender emailSender) 
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _context = context;
             _user = user;
+            _emailSender = emailSender;
         }
 
 
@@ -114,6 +117,10 @@ namespace CoffeeShop.Controllers
 
                 if (result.Succeeded)
                 {
+                    await _emailSender.SendEmailAsync(lvm.Email, "Thank you for logging in", "<p>Thanks</p>");
+
+                    var ourUser = await _userManager.FindByEmailAsync(lvm.Email);
+                    string id = ourUser.Id;
                     return RedirectToAction("Index", "Home");
                 }
             }
