@@ -43,8 +43,23 @@ namespace CoffeeShop.Models
                 expirationDate = "1120"
             };
 
+            // make call out to the external method 
             customerAddressType billingAddress = GetAddress();
-            return " it works";
+
+            // only payment type we are accepting is CC
+            paymentType paymentType = new paymentType { Item = creditCard };
+
+            // consolidates all of the information about transaction before sending it to AUth.NET. 
+            // info to be on transaction request
+
+            transactionRequestType transactionRequest = new transactionRequestType
+            {
+                transactionType = transactionTypeEnum.authCaptureTransaction.ToString(),
+                amount = 200.0m,
+                payment = paymentType,
+                billTo = billingAddress,
+            };
+
         }
         /// <summary>
         /// address of user
