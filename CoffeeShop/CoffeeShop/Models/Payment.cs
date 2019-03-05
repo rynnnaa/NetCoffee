@@ -57,7 +57,7 @@ namespace CoffeeShop.Models
             transactionRequestType transactionRequest = new transactionRequestType
             {
                 transactionType = transactionTypeEnum.authCaptureTransaction.ToString(),
-                amount = 200.0m,
+                amount = 1.0m,
                 payment = paymentType,
                 billTo = billingAddress,
                 //lineItems = 
