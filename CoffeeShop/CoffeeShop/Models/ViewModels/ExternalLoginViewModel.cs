@@ -15,5 +15,7 @@ namespace CoffeeShop.Models.ViewModels
         public string firstName { get; set; }
         [Required]
         public string lastName { get; set; }
+
+        public string member { get; set; }
     }
 }
