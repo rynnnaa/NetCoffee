@@ -67,10 +67,10 @@ namespace CoffeeShop.Data
                 },
                 new Coffee
                 {
-                     ID = 7,
-                     Name = "Irish Coffee",
-                     Description = " Is a cocktail consisting of hot coffee, Irish whiskey, and sugar, stirred, and topped with cream. The coffee is drunk through the cream.",
-                     URL = "/Assets/irishCoffee.jpg",
+                    ID = 7,
+                    Name = "Irish Coffee",
+                    Description = " Is a cocktail consisting of hot coffee, Irish whiskey, and sugar, stirred, and topped with cream. The coffee is drunk through the cream.",
+                    URL = "/Assets/irishCoffee.jpg",
                     Price = 7.00m,
                 },
                 new Coffee
@@ -99,9 +99,13 @@ namespace CoffeeShop.Data
                 }
                 );
         }
-        public DbSet<Cart> Carts { get; set; }
+
         public DbSet<Coffee> Coffee { get; set; }
-        public DbSet<Product> Products { get; set; }
+        public DbSet<ShoppingCartItem> ShoppingCartItems { get; set;}
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
+
+         
 
     }
 }

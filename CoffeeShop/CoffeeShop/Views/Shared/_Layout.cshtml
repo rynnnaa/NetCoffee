@@ -28,15 +28,16 @@
             <a href="#" class="brand-logo">NET Coffee</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
-                <li><a asp-action="../Home/Index">Home</a></li>
+                <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                @await Component.InvokeAsync("ShoppingCartSummary")
 
                 @if (SignInManager.IsSignedIn(User))
                 {
                     <li><a href="../Account/Logout">Logout</a></li>
                     <li><a href="#">About</a></li>
-                    <li><a href="#">Shop</a></li>
+                    <li><a href="/Shopping">Shop</a></li>
                     <li><a href="#">Contact</a></li>
-                    <li><a href="#">Cart</a></li>
+                    <li><a href="/ShoppingCart">Cart</a></li>
                 }
                 else
                 {

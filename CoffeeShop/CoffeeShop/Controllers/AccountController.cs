@@ -18,7 +18,7 @@ namespace CoffeeShop.Controllers
     {
         private UserManager<ApplicationUser> _userManager;
         private SignInManager<ApplicationUser> _signInManager;
-        private readonly ICart _context;
+       
         private readonly ApplicationDbContext _user;
         private readonly IEmailSender _emailSender;
 
@@ -27,11 +27,11 @@ namespace CoffeeShop.Controllers
         /// </summary>
         /// <param name="userManager"></param>
         /// <param name="signInManager"></param>
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ICart context, ApplicationDbContext user, IEmailSender emailSender) 
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ApplicationDbContext user, IEmailSender emailSender) 
         {
             _userManager = userManager;
             _signInManager = signInManager;
-            _context = context;
+           
             _user = user;
             _emailSender = emailSender;
         }
