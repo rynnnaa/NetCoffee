@@ -13,8 +13,8 @@ namespace CoffeeShop.Models
     {
         private static readonly List<IdentityRole> Roles = new List<IdentityRole>()
         {
-            new IdentityRole{Name= ApplicationUser.Member, NormalizedName = ApplicationUser.Member.ToUpper(), ConcurrencyStamp = Guid.NewGuid().ToString()},
-            new IdentityRole{Name = ApplicationUser.Admin, NormalizedName = ApplicationUser.Admin.ToUpper(), ConcurrencyStamp = Guid.NewGuid().ToString()}
+            new IdentityRole{Name= ApplicationRoles.Member, NormalizedName = ApplicationRoles.Member.ToUpper(), ConcurrencyStamp = Guid.NewGuid().ToString()},
+            new IdentityRole{Name = ApplicationRoles.Admin, NormalizedName = ApplicationRoles.Admin.ToUpper(), ConcurrencyStamp = Guid.NewGuid().ToString()}
         };
 
         /// <summary>
