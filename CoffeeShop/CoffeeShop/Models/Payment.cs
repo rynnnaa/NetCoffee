@@ -31,9 +31,10 @@ namespace CoffeeShop.Models
             // set merchant info
             ApiOperationBase<ANetApiRequest, ANetApiResponse>.MerchantAuthentication = new merchantAuthenticationType()
             {
-                name = "527e96Q5cB9",
+                //or actual authnet hard coded data
+                name = _configuration["AuthNetAPILogin"],
                 ItemElementName = ItemChoiceType.transactionKey,
-                Item = "6qWk5GKgDj578a5W"
+                Item = _configuration["AuthNetTransactionKey"]
             };
 
             // Create CC.
