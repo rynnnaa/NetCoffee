@@ -4,9 +4,9 @@
 @inject UserManager<ApplicationUser> UserManager;
 
 
-    @{
-        Layout = "_Layout";
-    }
+@{
+    Layout = "_Layout";
+}
 
 @if (SignInManager.IsSignedIn(User))
 {
@@ -18,4 +18,7 @@ else
         <p>Welcome To NET Cafe.</p>
     </div>
 }
-    
+
+<form method="post">
+<button type="submit">PAY ME</button>
+</form>

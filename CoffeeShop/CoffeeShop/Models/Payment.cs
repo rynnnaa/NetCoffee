@@ -31,9 +31,9 @@ namespace CoffeeShop.Models
             // set merchant info
             ApiOperationBase<ANetApiRequest, ANetApiResponse>.MerchantAuthentication = new merchantAuthenticationType()
             {
-                name = "28mJ9dEu",
+                name = "AuthnetAPILogin",
                 ItemElementName = ItemChoiceType.transactionKey,
-                Item = "7mH28243jP3wN8w7"
+                Item = "AuthNetTransactionKey"
             };
 
             // Create CC.
@@ -59,6 +59,7 @@ namespace CoffeeShop.Models
                 amount = 200.0m,
                 payment = paymentType,
                 billTo = billingAddress,
+                //lineItems = 
             };
 
             createTransactionRequest request = new createTransactionRequest
