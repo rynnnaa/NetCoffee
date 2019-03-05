@@ -162,7 +162,7 @@ namespace CoffeeShop.Controllers
         }
 
         /// <summary>
-        /// Checks to see if amenity exists
+        /// Checks to see if  exists
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
