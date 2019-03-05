@@ -43,7 +43,7 @@ namespace CoffeeShop.Controllers
             }
             return RedirectToAction("Index");
         }
-
+        
         public RedirectToActionResult RemoveFromShoppingCart(int coffeeId)
         {
             Coffee selected = _inventory.Coffee.FirstOrDefault(c => c.ID == coffeeId);
