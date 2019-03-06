@@ -89,7 +89,7 @@ namespace CoffeeShop.Controllers
 
                     await _userManager.AddClaimsAsync(user, claims);
 
-                    if(user.Email == "amanda@codefellows.com")
+                    if(user.Email == "amanda@codefellows.com" || user.Email == "philip.r.werner@gmail.com")
                     {
                         await _userManager.AddToRoleAsync(user, ApplicationRoles.Admin);
                         await _userManager.AddToRoleAsync(user, ApplicationRoles.Member);
