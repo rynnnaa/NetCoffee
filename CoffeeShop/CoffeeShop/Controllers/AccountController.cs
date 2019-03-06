@@ -128,6 +128,7 @@ namespace CoffeeShop.Controllers
                     if (await _userManager.IsInRoleAsync(user, ApplicationRoles.Admin))
                     {
                         return RedirectToAction("Index", "Admin");
+
                     }
 
                     await _emailSender.SendEmailAsync(lvm.Email, "Thank you for logging in", "<p>Thanks</p>");
