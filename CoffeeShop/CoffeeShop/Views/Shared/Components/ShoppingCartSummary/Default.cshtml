@@ -1,0 +1,14 @@
+﻿@model CoffeeShop.Models.ViewModels.ShoppingCartViewModel;
+
+
+@if (Model.ShoppingCart.ShoppingCartItems.Count > 0)
+{
+    <li>
+        <a asp-controller="ShoppingCart">
+            <span class="material-icons">shopping_cart</span>
+            <span id="cart-status">
+                @Model.ShoppingCart.ShoppingCartItems.Count
+            </span>
+        </a>
+    </li>
+}

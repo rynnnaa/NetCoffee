@@ -1,0 +1,30 @@
+﻿@model CoffeeShop.Models.Coffee
+
+
+@{
+    Layout = "_Layout";
+}
+
+<div class="container">
+
+</div>
+<div class="container">
+  
+        <div class="card-image medium center">
+            <img class="responsive-img" src="@Model.URL" />
+            <div class="card-content">
+                <h3>@Model.Name</h3>
+                <span>@Model.Description</span>
+                <h5>$@Model.Price.ToString("c") </h5>
+            </div>
+            <form asp-action="Create" method="post">
+                <button  type="submit" class="btn-large grey darken-4" asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-id="@Model.ID">Add To Cart</button>
+            </form>
+
+        </div>
+    </div>
+
+</div>
+<div class="center-align">
+    <a asp-action="Index">Back To List</a>
+</div>

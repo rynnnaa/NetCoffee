@@ -1,0 +1,39 @@
+﻿@model CoffeeShop.Models.ViewModels.ShoppingCartViewModel;
+
+@{
+Layout = "_Layout";
+}
+
+<h2>Your shopping cart:</h2>
+<h4>Items in your shopping cart</h4>
+<table class="centered striped">
+    <thead>
+        <tr>
+            <th>Amount</th>
+            <th>Item</th>
+            <th class="right-align">Price</th>
+            <th class="right-align">Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var line in Model.ShoppingCart.ShoppingCartItems)
+        {
+        <tr>
+            <td class="center">@line.Amount</td>
+            <td class="left">@line.Coffee.Name</td>
+            <td class="right">@line.Coffee.Price.ToString("c")</td>
+            <td class="right">@((line.Amount * line.Coffee.Price).ToString("c"))</td>
+
+        </tr>
+        }
+    </tbody>
+    <tfoot>
+        <td class="col s3">Total:</td>
+        <td class="right">@Model.ShoppingCartTotal.ToString("c")</td>
+    </tfoot>
+</table>
+
+
+
+
+

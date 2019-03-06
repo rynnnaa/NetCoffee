@@ -7,6 +7,7 @@ namespace CoffeeShop.Models.Interfaces
 {
     public interface IInventory
     {
+        IEnumerable<Coffee> Coffee { get; set; }
 
         // Create
         Task CreateCoffee(Coffee coffee);
@@ -18,10 +19,7 @@ namespace CoffeeShop.Models.Interfaces
         Task<List<Coffee>> GetAllCoffee();
 
         // Read
-        Task<Coffee> GetCoffee(int? id);
-        Task<IEnumerable<Coffee>> GetCoffee();
-
-        bool CoffeeExists(int id);
+        Task<Coffee> GetCoffee(int id);
 
         //// Save
         //Task SaveAsync(Coffee coffee);

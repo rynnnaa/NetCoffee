@@ -14,5 +14,13 @@ namespace CoffeeShop.Models
         public DateTime Birthday { get; set; }
         public State State { get; set; }
         public string FavoriteCoffee { get; set; }
+
+        
+    }
+
+    public static class ApplicationRoles
+    {
+        public const string Admin = "Admin";
+        public const string Member = "Member";
     }
 }

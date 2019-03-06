@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace CoffeeShop.Migrations
+namespace CoffeeShop.Migrations.ApplicationDb
 {
-    public partial class segundo : Migration
+    public partial class ME : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
