@@ -64,8 +64,6 @@ namespace CoffeeShop
 
             services.AddScoped<IEmailSender, EmailSender>();
 
-
-
             services.AddMemoryCache();
             services.AddSession();
 
@@ -85,8 +83,7 @@ namespace CoffeeShop
             {
                 app.UseDeveloperExceptionPage();
             }
-            
-
+           
             app.UseStaticFiles();
             app.UseSession();
             app.UseMvc(routes =>
