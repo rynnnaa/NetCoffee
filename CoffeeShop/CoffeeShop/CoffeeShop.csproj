@@ -7,13 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Views\Home\**" />
     <Compile Remove="Views\Homr\**" />
-    <Content Remove="Views\Home\**" />
     <Content Remove="Views\Homr\**" />
-    <EmbeddedResource Remove="Views\Home\**" />
     <EmbeddedResource Remove="Views\Homr\**" />
-    <None Remove="Views\Home\**" />
     <None Remove="Views\Homr\**" />
   </ItemGroup>
 

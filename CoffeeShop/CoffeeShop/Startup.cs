@@ -54,10 +54,10 @@ namespace CoffeeShop
 
 
             services.AddAuthentication().AddMicrosoftAccount(microsoftOptions =>
-            {
-                microsoftOptions.ClientId = Configuration["Authentication:Microsoft:ApplicationId"];
-                microsoftOptions.ClientSecret = Configuration["Authentication:Microsoft:Password"];
-            });
+             {
+                 microsoftOptions.ClientId = Configuration["Authentication:Microsoft:ApplicationId"];
+                 microsoftOptions.ClientSecret = Configuration["Authentication:Microsoft:Password"];
+             });
 
             services.AddScoped<IAuthorizationHandler, WashingtonianRequirement>();
             services.AddScoped<IInventory, CoffeeManager>();

@@ -26,21 +26,21 @@ namespace CoffeeShop.Controllers
             return View();
         }
 
-        [HttpPost]
-        public IActionResult Index(bool works = true)
-        {
-            Payment payment = new Payment(_configuration);
-            string answer = payment.Run();
+        //[HttpPost]
+        //public IActionResult Index(bool works = true)
+        //{
+        //    Payment payment = new Payment(_configuration);
+        //    string answer = payment.Run();
 
-            if(answer == "OK")
-            {
-                return View();
-            }
-            else
-            {
-            return View();
+        //    if(answer == "OK")
+        //    {
+        //        return View();
+        //    }
+        //    else
+        //    {
+        //    return View();
 
-            }
-        }
+        //    }
+        //}
     }
 }
