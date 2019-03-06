@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace CoffeeShop.Migrations.ApplicationDb
+namespace CoffeeShop.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190306000109_k")]
-    partial class k
+    [Migration("20190306003047_dc")]
+    partial class dc
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
