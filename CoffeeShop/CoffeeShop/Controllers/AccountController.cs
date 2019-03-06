@@ -89,7 +89,7 @@ namespace CoffeeShop.Controllers
 
                     await _userManager.AddClaimsAsync(user, claims);
 
-                    if(user.Email == "amanda@codefellows.com")
+                    if(user.Email == "amanda@codefellows.com" || user.Email == "philip.r.werner@gmail.com")
                     {
                         await _userManager.AddToRoleAsync(user, ApplicationRoles.Admin);
                         await _userManager.AddToRoleAsync(user, ApplicationRoles.Member);
@@ -128,6 +128,7 @@ namespace CoffeeShop.Controllers
                     if (await _userManager.IsInRoleAsync(user, ApplicationRoles.Admin))
                     {
                         return RedirectToAction("Index", "Admin");
+
                     }
 
                     await _emailSender.SendEmailAsync(lvm.Email, "Thank you for logging in", "<p>Thanks</p>");
