@@ -2,7 +2,7 @@
 
 namespace CoffeeShop.Migrations
 {
-    public partial class three : Migration
+    public partial class f : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

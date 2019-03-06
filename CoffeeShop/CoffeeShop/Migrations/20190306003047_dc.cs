@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace CoffeeShop.Migrations.ApplicationDb
+namespace CoffeeShop.Migrations
 {
-    public partial class jimmywashere : Migration
+    public partial class dc : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

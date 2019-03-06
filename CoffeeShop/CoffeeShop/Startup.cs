@@ -38,20 +38,18 @@ namespace CoffeeShop
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
-                
+
             services.AddDbContext<ApplicationDbContext>(options =>
-            options.UseSqlServer(Configuration["ConnectionStrings:IdentityDefaultConnection"])); //IdentityProductionConnection
+            options.UseSqlServer(Configuration["ConnectionStrings:IdentityDefaultConnection"]));
 
             services.AddDbContext<CoffeeShopDbContext>(options =>
             options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"])); // new connection string
 
             services.AddAuthorization(options =>
             {
-                options.AddPolicy("FromWashington", policy => policy.Requirements.Add(new WashingtonianRequirement("WA")));
+                options.AddPolicy("AdminOnly", policy => policy.RequireRole(ApplicationRoles.Admin));
+                //options.AddPolicy("FromWashington", policy => policy.Requirements.Add(new WashingtonianRequirement("WA")));
             });
-
-
-
 
             services.AddAuthentication().AddMicrosoftAccount(microsoftOptions =>
             {
@@ -65,8 +63,6 @@ namespace CoffeeShop
             services.AddScoped(s => ShoppingCart.GetCart(s));
 
             services.AddScoped<IEmailSender, EmailSender>();
-
-
 
             services.AddMemoryCache();
             services.AddSession();
@@ -87,8 +83,7 @@ namespace CoffeeShop
             {
                 app.UseDeveloperExceptionPage();
             }
-            
-
+           
             app.UseStaticFiles();
             app.UseSession();
             app.UseMvc(routes =>
