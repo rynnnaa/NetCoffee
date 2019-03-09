@@ -133,7 +133,8 @@ namespace CoffeeShop.Controllers
         /// Will succesfully sign out a user. 
         /// </summary>
         /// <returns>View</returns>
-        [HttpGet]
+        [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();

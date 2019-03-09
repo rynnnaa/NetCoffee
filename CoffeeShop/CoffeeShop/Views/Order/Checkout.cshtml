@@ -1,2 +1,20 @@
 ﻿@model CoffeeShop.Models.Order
+@using Microsoft.AspNetCore.Identity
+@using CoffeeShop.Models
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@{
+    ViewData["Title"] = "Checkout";
+ }
 
+
+
+<h3 class="center-align">To finish checking out please enter your details below</h3>
+<div class="container">
+    <form asp-action="Checkout" method="post">
+        <div class="input-field col s6">
+            <input id="first_name" type="text" class="validate">
+            <label for="">First Name</label>
+        </div>
+    </form>
+</div>
