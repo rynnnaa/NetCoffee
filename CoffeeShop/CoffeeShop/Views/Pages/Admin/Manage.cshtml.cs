@@ -26,7 +26,7 @@ namespace CoffeeShop.Views.Pages.Admin
 
         public async Task OnGet()
         {
-            Coffee = await _coffee.FindCoffee(ID.GetValueOrDefault()) ?? new Coffee();
+            Coffee coffee = await _coffee.FindCoffee(ID.GetValueOrDefault()) ?? new Coffee();
         }
 
         public async Task<IActionResult> OnPost()

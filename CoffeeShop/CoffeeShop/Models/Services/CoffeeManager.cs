@@ -123,5 +123,34 @@ namespace CoffeeShop.Models.Services
 
             return await _context.Coffee.ToListAsync();
         }
+
+        public async Task<Coffee> FindCoffee(int id)
+        {
+            Coffee coffee = await _context.Coffee.FirstOrDefaultAsync(cof => cof.ID == id);
+            return coffee;
+        }
+
+        public async Task SaveAsync(Coffee coffee)
+        {
+            if (await _context.Coffee.FirstOrDefaultAsync(m => m.ID == coffee.ID) == null)
+            {
+                _context.Coffee.Add(coffee);
+            }
+            else
+            {
+                _context.Coffee.Update(coffee);
+            }
+            // save the database
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteAsync(int id)
+        {
+            Coffee coffee = await _context.Coffee.FindAsync(id);
+            if (coffee != null)
+            {
+                _context.Remove(coffee);
+                await _context.SaveChangesAsync();
+            }
+        }
     }
-}
