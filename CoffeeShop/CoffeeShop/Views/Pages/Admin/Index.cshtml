@@ -1,0 +1,16 @@
+﻿@page
+@model CoffeeShop.Views.Pages.Admin.IndexModel
+@{
+}
+
+<div>
+    <label asp-for="coffee.Name"></label>
+    <label asp-for="coffee.Name">@Model.coffee.Name</label>
+</div>
+
+<div>
+    <label asp-for="coffee.Price"></label>
+    <label asp-for="coffee.Price">@Model.coffee.Price</label>
+</div>
+
+<a asp-page="/Restaurants/Manage" asp-route-id="@Model.Coffee.ID">EDIT</a>

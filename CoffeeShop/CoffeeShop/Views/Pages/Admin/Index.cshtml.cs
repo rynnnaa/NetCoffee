@@ -9,24 +9,24 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace CoffeeShop.Views.Pages.Admin
 {
-    public class EditModel : PageModel
+    public class IndexModel : PageModel
     {
 
         private readonly IInventory _inventory;
 
-        public EditModel(IInventory inventory)
+        public IndexModel(IInventory inventory)
         {
             _inventory = inventory;
         }
 
         [FromRoute]
         public int ID { get; set; }
-        public Coffee coffee{ get; set; }
+        public Coffee coffee { get; set; }
 
 
         public async Task OnGet()
         {
-            Coffee = await _inventory.FindCoffee(ID);
+            Inventory = await _inventory.FindCoffee(ID);
         }
     }
 }
