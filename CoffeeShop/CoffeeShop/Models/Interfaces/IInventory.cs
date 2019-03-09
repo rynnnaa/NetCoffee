@@ -22,6 +22,7 @@ namespace CoffeeShop.Models.Interfaces
         Task<IEnumerable<Coffee>> GetCoffee();
 
         bool CoffeeExists(int id);
+        Task FindCoffee(int iD);
 
         //// Save
         //Task SaveAsync(Coffee coffee);
