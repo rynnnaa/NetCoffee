@@ -23,6 +23,8 @@ namespace CoffeeShop.Models.Interfaces
 
         bool CoffeeExists(int id);
         Task FindCoffee(int iD);
+        Task SaveAsync(object cof);
+        Task DeleteAsync(int value);
 
         //// Save
         //Task SaveAsync(Coffee coffee);
