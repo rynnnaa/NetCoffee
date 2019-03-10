@@ -30,6 +30,10 @@ namespace CoffeeShop
             builder.AddUserSecrets<Startup>();
             Configuration = builder.Build();
         }
+        /// <summary>
+        ///  allows us utilize different connections and authentications types
+        /// </summary>
+        /// <param name="services"> utilize our authentication </param>
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
@@ -73,7 +77,11 @@ namespace CoffeeShop
                 facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
             });
         }
-
+        /// <summary>
+        /// sets routes and allows the use of static files
+        /// </summary>
+        /// <param name="app"> allows us to use static files</param>
+        /// <param name="env"> use of developemnt environment </param>
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
