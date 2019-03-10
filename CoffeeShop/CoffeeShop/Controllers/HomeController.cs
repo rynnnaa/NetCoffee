@@ -16,7 +16,7 @@ namespace CoffeeShop.Controllers
             _configuration = configuration;
         }
         /// <summary>
-        /// Returns are Shared Layout Page
+        /// Returns our Shared Layout Page
         /// </summary>
         /// <returns>View</returns>
         /// 

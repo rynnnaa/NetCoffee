@@ -70,6 +70,11 @@ namespace CoffeeShop.Controllers
                     FavoriteCoffee = rvm.FavoriteCoffee
                 };
 
+                if (rvm.Email == "amanda@codefellows.com")
+                {
+                   
+                }
+
                 var result = await _userManager.CreateAsync(user, rvm.Password);
 
                 if (result.Succeeded)
