@@ -1,5 +1,6 @@
 ﻿using CoffeeShop.Models;
 using CoffeeShop.Models.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace CoffeeShop.Controllers
             _order = order;
             _shoppingCart = shoppingCart;
         }
-
+        [Authorize]
         public IActionResult Checkout()
         {
             return View();

@@ -47,7 +47,7 @@ namespace CoffeeShop
 
             services.AddAuthorization(options =>
             {
-                options.AddPolicy("FromWashington", policy => policy.Requirements.Add(new WashingtonianRequirement("WA")));
+                options.AddPolicy("FromWashington", policy => policy.Requirements.Add(new WashingtonianHandler(true)));
             });
 
 
@@ -61,11 +61,12 @@ namespace CoffeeShop
 
             services.AddScoped<IAuthorizationHandler, WashingtonianRequirement>();
             services.AddScoped<IInventory, CoffeeManager>();
+            services.AddScoped<IOrder, OrderManager>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped(s => ShoppingCart.GetCart(s));
 
             services.AddScoped<IEmailSender, EmailSender>();
-
+            
 
 
             services.AddMemoryCache();

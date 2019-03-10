@@ -1,2 +1,27 @@
 ﻿@model CoffeeShop.Models.Order
+@{
+    Layout = "_Layout"; 
+}
 
+
+<div class="row">
+    <h3 class="center-align">To finish your order, please fill out this form</h3>
+    <div class="container">
+        <form asp-action="Checkout" method="post" class="center">
+            <div class="input-field col s12">
+                <label asp-for="FirstName"></label>
+                <input asp-for="FirstName" />
+            </div>
+            <div class="input-field col s12">
+                <label asp-for="LastName"></label>
+                <input asp-for="LastName" />
+            </div>
+            <div class="input-field col s12">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" />
+            </div>
+            <button type="submit" class="btn-large">Complete Order</button>
+        </form>
+    </div>
+    
+</div>
