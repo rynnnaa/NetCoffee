@@ -14,5 +14,15 @@ namespace XUnitTestProject1
 
             Assert.Equal("Latte", coffee.Name);
         }
+
+        [Fact]
+        public void CanSetCoffee()
+        {
+            Coffee coffee = new Coffee();
+            coffee.Name = "Espresso";
+            coffee.Name = "Latte";         
+
+            Assert.Equal("Latte", coffee.Name);
+        }
     }
 }
