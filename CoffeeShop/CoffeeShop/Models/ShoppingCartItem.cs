@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace CoffeeShop.Models
 {
+    /// <summary>
+    /// specifies the criteria for what a shopping cart item will contain 
+    /// </summary>
     public class ShoppingCartItem
     {
         public int ShoppingCartItemId { get; set; }

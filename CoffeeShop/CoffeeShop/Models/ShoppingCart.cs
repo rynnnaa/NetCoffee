@@ -22,6 +22,11 @@ namespace CoffeeShop.Models
 
         public List<ShoppingCartItem> ShoppingCartItems { get; set; }
 
+        /// <summary>
+        /// acesses coffee shop db 
+        /// </summary>
+        /// <param name="services"></param>
+        /// <returns> returns new shopping cart</returns>
         public static ShoppingCart GetCart(IServiceProvider services)
         {
             ISession session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
@@ -33,7 +38,11 @@ namespace CoffeeShop.Models
 
             return new ShoppingCart(context) { ShoppingCartId = cartId };
         }
-
+        /// <summary>
+        /// allows user to add item to cart
+        /// </summary>
+        /// <param name="coffee"> the specific coffee selected</param>
+        /// <param name="amount"> the quantity of the coffee selected</param>
         public void AddToCart(Coffee coffee, int amount)
         {
             var shoppingCartItem = _context.ShoppingCartItems.SingleOrDefault(s => s.Coffee.ID == coffee.ID && s.ShoppingCartId == ShoppingCartId);
@@ -55,7 +64,11 @@ namespace CoffeeShop.Models
             }
             _context.SaveChanges();
         }
-
+        /// <summary>
+        /// allows user to remove item from cart
+        /// </summary>
+        /// <param name="coffee"> the item to be removed from the cart</param>
+        /// <returns> returns the cart with the specified item removed</returns>
         public int RemoveFromCart(Coffee coffee)
         {
             var shoppingCartItem = _context.ShoppingCartItems.SingleOrDefault(s => s.Coffee.ID == coffee.ID && s.ShoppingCartId == ShoppingCartId);
@@ -78,7 +91,10 @@ namespace CoffeeShop.Models
             _context.SaveChanges();
             return userAmount;
         }
-
+        /// <summary>
+        /// gets shopping cart items
+        /// </summary>
+        /// <returns> returns cart items</returns>
         public List<ShoppingCartItem> GetShoppingCartItems()
         {
             return ShoppingCartItems ?? 
