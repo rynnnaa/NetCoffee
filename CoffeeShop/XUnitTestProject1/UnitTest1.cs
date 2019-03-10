@@ -102,13 +102,107 @@ namespace XUnitTestProject1
         }
 
         [Fact]
-        public void CanGetOrder()
+        public void CanGetOrderId()
         {
-            Coffee coffee = new Coffee();
-            coffee.Description = "tasty";
+            Order order = new Order();
+            order.OrderId = 1;
 
-            Assert.Equal("tasty", coffee.Description);
+            Assert.Equal(1, order.OrderId);
         }
+
+        [Fact]
+        public void CanSetOrderId()
+        {
+            Order order = new Order();
+            order.OrderId = 1;
+            order.OrderId = 2;
+
+            Assert.Equal(2, order.OrderId);
+        }
+
+        [Fact]
+        public void CanGetOrderEmail()
+        {
+            Order order = new Order();
+            order.Email = "order@hotmail.com";
+
+            Assert.Equal("order@hotmail.com", order.Email);
+        }
+
+        [Fact]
+        public void CanSetOrderEmail()
+        {
+            Order order = new Order();
+            order.Email = "order@yahoo.com";
+            order.Email = "order@hotmail.com";
+
+            Assert.Equal("order@hotmail.com", order.Email);
+        }
+
+        [Fact]
+        public void CanGetOrderFirstName()
+        {
+            Order order = new Order();
+            order.FirstName = "luther";
+
+            Assert.Equal("luther", order.FirstName);
+        }
+
+        [Fact]
+        public void CanSetOrderFirstName()
+        {
+            Order order = new Order();
+            order.FirstName = "ryna";
+            order.FirstName = "luther";
+
+            Assert.Equal("luthr", order.FirstName);
+        }
+
+        [Fact]
+        public void CanGetOrderLastName()
+        {
+            Order order = new Order();
+            order.LastName = "luther";
+
+            Assert.Equal("luther", order.LastName);
+        }
+
+        [Fact]
+        public void CanSetOrderLastName()
+        {
+            Order order = new Order();
+            order.LastName = "ray";
+            order.LastName = "luther";
+
+            Assert.Equal("luther", order.LastName);
+        }
+
+        //[Fact]
+        //public void CanGetOrderLines()
+        //{
+        //    Order order = new Order();
+        //    order.OrderLines = ;
+
+        //    Assert.Equal("luther", order.OrderLines);
+        //}
+
+        //[Fact]
+        //public void CanSetOrderLines()
+        //{
+        //    Order order = new Order();
+        //    order.OrderLines = ;
+
+        //    Assert.Equal("luther", order.OrderLines);
+        //}
+
+        [Fact]
+        public void CanGetOrderLines()
+        {
+            Order order = new Order();
+            order.OrderLines = ;
+
+            Assert.Equal("luther", order.OrderLines);
+        }
+
     }
-}
 }
