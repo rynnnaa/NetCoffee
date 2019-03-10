@@ -1,13 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace CoffeeShop.Models
+﻿namespace CoffeeShop.Models
 {
+    /// <summary>
+    /// Defines the <see cref="Roles" />
+    /// </summary>
     public class Roles
     {
+        /// <summary>
+        /// Defines the User
+        /// </summary>
         public string User = "User";
+
+        /// <summary>
+        /// Defines the Admin
+        /// </summary>
         public string Admin = "Admin";
     }
 }
