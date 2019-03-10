@@ -30,10 +30,6 @@ namespace CoffeeShop
             builder.AddUserSecrets<Startup>();
             Configuration = builder.Build();
         }
-        /// <summary>
-        ///  allows us utilize different connections and authentications types
-        /// </summary>
-        /// <param name="services"> utilize our authentication </param>
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
@@ -42,31 +38,36 @@ namespace CoffeeShop
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
-
+                
             services.AddDbContext<ApplicationDbContext>(options =>
-            options.UseSqlServer(Configuration["ConnectionStrings:IdentityDefaultConnection"]));
+            options.UseSqlServer(Configuration["ConnectionStrings:IdentityProductionConnection"]));
 
             services.AddDbContext<CoffeeShopDbContext>(options =>
-            options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"])); // new connection string
+            options.UseSqlServer(Configuration["ConnectionStrings:ProductionConnection"])); // new connection string
 
             services.AddAuthorization(options =>
             {
-                options.AddPolicy("AdminOnly", policy => policy.RequireRole(ApplicationRoles.Admin));
-                //options.AddPolicy("FromWashington", policy => policy.Requirements.Add(new WashingtonianRequirement("WA")));
+                options.AddPolicy("FromWashington", policy => policy.Requirements.Add(new WashingtonianHandler(true)));
             });
 
+
+
+
             services.AddAuthentication().AddMicrosoftAccount(microsoftOptions =>
-            {
-                microsoftOptions.ClientId = Configuration["Authentication:Microsoft:ApplicationId"];
-                microsoftOptions.ClientSecret = Configuration["Authentication:Microsoft:Password"];
-            });
+             {
+                 microsoftOptions.ClientId = Configuration["Authentication:Microsoft:ApplicationId"];
+                 microsoftOptions.ClientSecret = Configuration["Authentication:Microsoft:Password"];
+             });
 
             services.AddScoped<IAuthorizationHandler, WashingtonianRequirement>();
             services.AddScoped<IInventory, CoffeeManager>();
+            services.AddScoped<IOrder, OrderManager>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped(s => ShoppingCart.GetCart(s));
 
             services.AddScoped<IEmailSender, EmailSender>();
+            
+
 
             services.AddMemoryCache();
             services.AddSession();
@@ -77,11 +78,7 @@ namespace CoffeeShop
                 facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
             });
         }
-        /// <summary>
-        /// sets routes and allows the use of static files
-        /// </summary>
-        /// <param name="app"> allows us to use static files</param>
-        /// <param name="env"> use of developemnt environment </param>
+
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
@@ -91,7 +88,8 @@ namespace CoffeeShop
             {
                 app.UseDeveloperExceptionPage();
             }
-           
+            
+
             app.UseStaticFiles();
             app.UseSession();
             app.UseMvc(routes =>

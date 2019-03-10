@@ -19,7 +19,7 @@ namespace CoffeeShop.Models.Services
         }
 
         /// <summary>
-        /// create an instance of an order
+        /// Create an instance of an order
         /// </summary>
         /// <param name="order"></param>
         /// <returns></returns>

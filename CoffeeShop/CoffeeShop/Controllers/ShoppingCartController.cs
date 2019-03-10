@@ -1,6 +1,7 @@
 ﻿using CoffeeShop.Models;
 using CoffeeShop.Models.Interfaces;
 using CoffeeShop.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -33,6 +34,7 @@ namespace CoffeeShop.Controllers
             return View(cartViewModel);
         }
 
+        
         public async Task <RedirectToActionResult> AddToShoppingCart(int id)
         {
             Coffee selected = await _inventory.GetCoffee(id);
@@ -43,10 +45,10 @@ namespace CoffeeShop.Controllers
             }
             return RedirectToAction("Index");
         }
-        
-        public RedirectToActionResult RemoveFromShoppingCart(int coffeeId)
+
+        public async Task <RedirectToActionResult> RemoveFromShoppingCart(int id)
         {
-            Coffee selected = _inventory.Coffee.FirstOrDefault(c => c.ID == coffeeId);
+            Coffee selected = await _inventory.GetCoffee(id);
 
             if (selected != null)
             {

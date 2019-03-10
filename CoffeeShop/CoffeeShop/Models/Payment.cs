@@ -81,8 +81,8 @@ namespace CoffeeShop.Models
                 if (response.messages.resultCode == messageTypeEnum.Ok)
                 {
                     if (response.transactionResponse != null)
-                    {                       
-                       Console.WriteLine("Success");                       
+                    {
+                        Console.WriteLine("Success");
                     }
                 }
                 else
@@ -139,9 +139,9 @@ namespace CoffeeShop.Models
                 };
                 count++;
             }
-                return lineitems;
+            return lineitems;
         }
     }
-       
+
 }
 
