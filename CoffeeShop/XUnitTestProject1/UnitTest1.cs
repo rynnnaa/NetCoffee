@@ -323,6 +323,7 @@ namespace XUnitTestProject1
 
                 Assert.False(result);
             }
+        }
 
             [Fact]
         public async void CanReadCoffee()
@@ -341,7 +342,7 @@ namespace XUnitTestProject1
                 CoffeeManager coffeeManager = new CoffeeManager(context);
 
                 await coffeeManager.CreateCoffee(coffee);
-                await coffeeManager.GetCoffee(coffee);
+                await coffeeManager.GetCoffee(coffee.ID);
 
                 var result = context.Coffee.FirstOrDefault(c => c.ID == coffee.ID);
 
