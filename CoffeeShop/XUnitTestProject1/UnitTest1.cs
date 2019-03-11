@@ -1,6 +1,7 @@
 using CoffeeShop.Data;
 using CoffeeShop.Models;
 using CoffeeShop.Models.Services;
+using CoffeeShop.Models.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
@@ -398,5 +399,42 @@ namespace XUnitTestProject1
             }
         }
 
+        [Fact]
+        public void CanGetLoginEmail()
+        {
+            LoginViewModel loginViewModel= new LoginViewModel();
+            loginViewModel.Email = "coffee@hotmail.com";
+
+            Assert.Equal("coffee@hotmail.com", loginViewModel.Email);
+        }
+
+        [Fact]
+        public void CanSetLoginEmail()
+        {
+            LoginViewModel loginViewModel = new LoginViewModel();
+            loginViewModel.Email = "latte@hotmail.com";
+            loginViewModel.Email = "coffee@hotmail.com";
+
+            Assert.Equal("coffee@hotmail.com", loginViewModel.Email);
+        }
+
+        [Fact]
+        public void CanGetLoginPassword()
+        {
+            LoginViewModel loginViewModel = new LoginViewModel();
+            loginViewModel.Password = "latte123";
+
+            Assert.Equal("latte123", loginViewModel.Password);
+        }
+
+        [Fact]
+        public void CanSetLoginPassword()
+        {
+            LoginViewModel loginViewModel = new LoginViewModel();
+            loginViewModel.Password = "123latte";
+            loginViewModel.Password = "latte123";
+
+            Assert.Equal("latte123", loginViewModel.Password);
+        }
     }
 }
