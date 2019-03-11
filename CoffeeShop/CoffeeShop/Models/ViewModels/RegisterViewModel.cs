@@ -8,9 +8,6 @@
     /// </summary>
     public class RegisterViewModel
     {
-        /// <summary>
-        /// Gets or sets the FirstName
-        /// </summary>
         [Required]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
