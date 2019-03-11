@@ -323,5 +323,30 @@ namespace XUnitTestProject1
 
                 Assert.False(result);
             }
+
+            [Fact]
+        public async void CanReadCoffee()
+        {
+            DbContextOptions<CoffeeShopDbContext> options = new DbContextOptionsBuilder<CoffeeShopDbContext>().UseInMemoryDatabase("CanCreateCoffee").Options;
+            using (CoffeeShopDbContext context = new CoffeeShopDbContext(options))
+            {
+
+                Coffee coffee = new Coffee();
+                coffee.ID = 1;
+                coffee.Name = "latte";
+                coffee.Price = 2;
+                coffee.Description = "tasty";
+                coffee.URL = "www.coffee.com";
+
+                CoffeeManager coffeeManager = new CoffeeManager(context);
+
+                await coffeeManager.CreateCoffee(coffee);
+                await coffeeManager.GetCoffee(coffee);
+
+                var result = context.Coffee.FirstOrDefault(c => c.ID == coffee.ID);
+
+                Assert.Equal(coffee, result);
+            }
         }
     }
+}
