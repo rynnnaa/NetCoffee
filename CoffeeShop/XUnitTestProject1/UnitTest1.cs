@@ -284,6 +284,7 @@ namespace XUnitTestProject1
             DbContextOptions<CoffeeShopDbContext> options = new DbContextOptionsBuilder<CoffeeShopDbContext>().UseInMemoryDatabase("CanCreateCoffee").Options;
             using (CoffeeShopDbContext context = new CoffeeShopDbContext(options))
             {
+
                 Coffee coffee = new Coffee();
                 coffee.ID = 1;
                 coffee.Name = "latte";
