@@ -19,6 +19,7 @@ namespace XUnitTestProject1
 
             Assert.Equal(1, coffee.ID);
         }
+        
 
         [Fact]
         public void CanSetCoffeeID()
