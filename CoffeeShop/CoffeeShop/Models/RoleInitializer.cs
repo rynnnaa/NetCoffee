@@ -32,7 +32,7 @@ namespace CoffeeShop.Models
 
         }
         /// <summary>
-        /// Add roles
+        /// Add roles 
         /// </summary>
         /// <param name="context"></param>
         private static void AddRoles(ApplicationDbContext context)

@@ -47,17 +47,18 @@
                 <input asp-for="ConfirmPassword" />
                 <span asp-validation-for="ConfirmPassword"></span>
             </div>
-
-            <div class="input-field" col s12">
-                <label asp-for="State"></label>
-                <input asp-for="State" />
-                <span asp-validation-for="State"></span>
-            </div>
             <div class="input-field" col s12">
                 <label asp-for="FavoriteCoffee"></label>
                 <input asp-for="FavoriteCoffee" />
                 <span asp-validation-for="FavoriteCoffee"></span>
             </div>
+            <div></div>
+             <div class="checkbox">
+                <label asp-for="State"></label>
+                <input asp-for="State"/>
+                <span asp-validation-for="State"></span>
+            </div>
+            <hr>
             <button class="btn-large" type="submit">Register</button>
 
         </form>

@@ -14,6 +14,10 @@ namespace CoffeeShop
 {
     public class Program
     {
+        /// <summary>
+        /// access our seeded data
+        /// </summary>
+        /// <param name="args">  </param>
         public static void Main(string[] args)
         {
             var host = CreateWebHostBuilder(args).Build();
@@ -37,6 +41,11 @@ namespace CoffeeShop
             host.Run();
         }
 
+        /// <summary>
+        /// fires web page
+        /// </summary>
+        /// <param name="args"></param>
+        /// <returns> webpage </returns>
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>();
