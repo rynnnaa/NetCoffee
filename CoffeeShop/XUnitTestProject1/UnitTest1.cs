@@ -436,5 +436,108 @@ namespace XUnitTestProject1
 
             Assert.Equal("latte123", loginViewModel.Password);
         }
+
+        [Fact]
+        public void CanGetShoppingCart()
+        {
+            ShoppingCartViewModel cartvm = new ShoppingCartViewModel();
+            cartvm.ShoppingCartTotal = 100;
+
+            Assert.Equal(100, cartvm.ShoppingCartTotal);
+        }
+
+        [Fact]
+        public void CanSetShoppingCart()
+        {
+            ShoppingCartViewModel cartvm = new ShoppingCartViewModel();
+            cartvm.ShoppingCartTotal = 101;
+            cartvm.ShoppingCartTotal = 100;
+
+            Assert.Equal(100, cartvm.ShoppingCartTotal);
+        }
+
+        [Fact]
+        public void CanGetViewModelFirstName()
+        {
+            RegisterViewModel rvm = new RegisterViewModel();
+            rvm.FirstName = "ryna";
+
+            Assert.Equal("ryna", rvm.FirstName);
+        }
+
+        [Fact]
+        public void CanSetViewModelFirstName()
+        {
+            RegisterViewModel rvm = new RegisterViewModel();
+            rvm.FirstName = "ray";
+            rvm.FirstName = "ryna";
+
+            Assert.Equal("ryna", rvm.FirstName);
+        }
+
+        [Fact]
+        public void CanGetViewModeLastName()
+        {
+            RegisterViewModel rvm = new RegisterViewModel();
+            rvm.LastName = "ryna";
+
+            Assert.Equal("ryna", rvm.FirstName);
+        }
+
+        [Fact]
+        public void CanSetViewModelLastName()
+        {
+            RegisterViewModel rvm = new RegisterViewModel();
+            rvm.LastName = "luther";
+            rvm.FirstName = "ryna";
+
+            Assert.Equal("ryna", rvm.FirstName);
+        }
+
+        [Fact]
+        public void CanGetViewModelPassword()
+        {
+            RegisterViewModel rvm = new RegisterViewModel();
+            rvm.Password = "ryna";
+
+            Assert.Equal("ryna", rvm.Password);
+        }
+
+        [Fact]
+        public void CanSetViewModelPassword()
+        {
+            RegisterViewModel rvm = new RegisterViewModel();
+            rvm.Password = "123";
+            rvm.Password = "ryna";
+
+            Assert.Equal("ryna", rvm.Password);
+        }
+
+        [Fact]
+        public void CanGetViewModelFavoriteCoffee()
+        {
+            RegisterViewModel rvm = new RegisterViewModel();
+            rvm.FavoriteCoffee = "latte";
+
+            Assert.Equal("latte", rvm.FavoriteCoffee);
+        }
+
+        [Fact]
+        public void CanSetViewModelFavoriteCoffee()
+        {
+            RegisterViewModel rvm = new RegisterViewModel();
+            rvm.FavoriteCoffee = "espresso";
+            rvm.FavoriteCoffee = "latte";
+
+            Assert.Equal("latte", rvm.FavoriteCoffee);
+        }
+
+
+
+
+
+
+
+
     }
 }
