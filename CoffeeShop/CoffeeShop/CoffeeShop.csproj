@@ -7,32 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Views\Homr\**" />
-    <Content Remove="Views\Homr\**" />
-    <EmbeddedResource Remove="Views\Homr\**" />
-    <None Remove="Views\Homr\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="wwwroot\Assets\americano.jpg" />
-    <None Include="wwwroot\Assets\cappucino.jpg" />
-    <None Include="wwwroot\Assets\coldBrew.jpg" />
-    <None Include="wwwroot\Assets\espresso.jpg" />
-    <None Include="wwwroot\Assets\flatWhite.jpg" />
-    <None Include="wwwroot\Assets\irishCoffee.jpg" />
-    <None Include="wwwroot\Assets\latte.jpg" />
-    <None Include="wwwroot\Assets\longBlack.jpg" />
-    <None Include="wwwroot\Assets\mocha.jpg" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="AuthorizeNet" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.MicrosoftAccount" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.2.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.0" />
-    <PackageReference Include="SendGrid" Version="9.10.0" />
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.5.0" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JSONSchema="" /></VisualStudio></ProjectExtensions>
