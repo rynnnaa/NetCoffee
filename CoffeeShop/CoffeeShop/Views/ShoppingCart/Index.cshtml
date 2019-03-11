@@ -3,35 +3,45 @@
 @{
 Layout = "_Layout";
 }
+<div class="row">
+    <h2>Your shopping cart:</h2>
+    <h4>Items in your shopping cart</h4>
+    <table class="centered">
+        <thead>
+            <tr>
+                <th>Amount</th>
+                <th>Item</th>
+                <th class="right-align">Price</th>
+                <th class="right-align">Subtotal</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var line in Model.ShoppingCart.ShoppingCartItems)
+            {
+                <tr>
+                    <td class="center-align">@line.Amount</td>
+                    <td class="left-align">@line.Coffee.Name</td>
+                    <td class="right-align">@line.Coffee.Price.ToString("c")</td>
+                    <td class="right-align">@((line.Amount * line.Coffee.Price).ToString("c"))</td>
+                    <td class="center-align"><a class="material-icons red-text darken-4" asp-controller="ShoppingCart" 
+asp-action="RemoveFromShoppingCart" asp-route-id="@line.Coffee.ID">close</a></td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" class="right-align">Total:</td>
+                <td class="right-align">@Model.ShoppingCartTotal.ToString("c")</td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
 
-<h2>Your shopping cart:</h2>
-<h4>Items in your shopping cart</h4>
-<table class="centered striped">
-    <thead>
-        <tr>
-            <th>Amount</th>
-            <th>Item</th>
-            <th class="right-align">Price</th>
-            <th class="right-align">Subtotal</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var line in Model.ShoppingCart.ShoppingCartItems)
-        {
-        <tr>
-            <td class="center">@line.Amount</td>
-            <td class="left">@line.Coffee.Name</td>
-            <td class="right">@line.Coffee.Price.ToString("c")</td>
-            <td class="right">@((line.Amount * line.Coffee.Price).ToString("c"))</td>
+<div class="right-align">
+    <a class="btn-large" asp-controller="Order" asp-action="Checkout">Checkout</a>
+</div>
 
-        </tr>
-        }
-    </tbody>
-    <tfoot>
-        <td class="col s3">Total:</td>
-        <td class="right">@Model.ShoppingCartTotal.ToString("c")</td>
-    </tfoot>
-</table>
 
 
 

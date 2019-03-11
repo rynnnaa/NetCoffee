@@ -27,6 +27,7 @@
         </section>
     </div>
 </div>
+<hr />
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
@@ -37,12 +38,12 @@
 
     if (loginProviders.Count > 0)
     {
-        <h1> LOGIN PROVIDERS!!!</h1>
+        
 
         <form asp-action="ExternalLogin" method="post">
             @foreach (var provider in loginProviders)
             {
-                <button type="submit" name="provider" value="@provider.Name" title="Log in using @provider.DisplayName"> @provider.Name</button>
+                <button  class="btn-small"type="submit" name="provider" value="@provider.Name" title="Log in using @provider.DisplayName"> @provider.Name</button>
             }
         </form>
 

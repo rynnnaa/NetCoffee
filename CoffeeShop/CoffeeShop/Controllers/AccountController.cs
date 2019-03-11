@@ -41,7 +41,7 @@ namespace CoffeeShop.Controllers
         /// Default Register Page
         /// </summary>
         /// <returns>Return the View of the Register Page</returns>
-        [AllowAnonymous]
+        
         [HttpGet]
         public IActionResult Register()
         {
@@ -70,6 +70,11 @@ namespace CoffeeShop.Controllers
                     FavoriteCoffee = rvm.FavoriteCoffee
                 };
 
+                if (rvm.Email == "amanda@codefellows.com")
+                {
+                   
+                }
+
                 var result = await _userManager.CreateAsync(user, rvm.Password);
 
                 if (result.Succeeded)
@@ -81,7 +86,7 @@ namespace CoffeeShop.Controllers
 
                     Claim emailClaim = new Claim(ClaimTypes.Email, user.Email, ClaimValueTypes.Email);
 
-                    Claim stateClaim = new Claim(ClaimTypes.StateOrProvince, user.State.ToString());
+                    Claim stateClaim = new Claim("State", user.State.ToString().ToLower());
 
                     Claim favoriteCoffee = new Claim("FavoriteCoffee", user.FavoriteCoffee);
 
@@ -148,6 +153,7 @@ namespace CoffeeShop.Controllers
         /// </summary>
         /// <returns>View</returns>
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
@@ -202,7 +208,6 @@ namespace CoffeeShop.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
         public async Task<IActionResult> ExternalLoginConfirmation(ExternalLoginViewModel elvm)
         {
             if (ModelState.IsValid)

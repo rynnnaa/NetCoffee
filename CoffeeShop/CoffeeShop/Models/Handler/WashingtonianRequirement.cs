@@ -7,34 +7,25 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace CoffeeShop.Models.Handler
 {
-    public class WashingtonianRequirement : AuthorizationHandler<WashingtonianRequirement>, IAuthorizationRequirement
-    {
-        private string _state;
-
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        /// <param name="state"></param>
-        public WashingtonianRequirement(string state)
-        {
-            _state = state;
-        }
+    public class WashingtonianRequirement : AuthorizationHandler<WashingtonianHandler>, IAuthorizationRequirement
+    { 
         /// <summary>
         /// Returns whether or not the task for our claim has been completed
         /// </summary>
         /// <param name="context"></param>
         /// <param name="requirement"></param>
         /// <returns></returns>
-        protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, WashingtonianRequirement requirement)
+        protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, WashingtonianHandler requirement)
         {
-            if (!context.User.HasClaim(c => c.Type == ClaimTypes.StateOrProvince))
+            var state = context.User.Claims.First(c => c.Type == "State").Value;
+
+            if (!context.User.HasClaim(c => c.Type == "State"))
             {
                 return Task.CompletedTask;
             }
 
-            var washington = context.User.FindFirst(c => c.Type == ClaimTypes.StateOrProvince).Value;
 
-            if (washington == "Washington")
+            else if (state == "true")
             {
                 context.Succeed(requirement);
             }
