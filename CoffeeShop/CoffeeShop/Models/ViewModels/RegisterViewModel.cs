@@ -10,6 +10,7 @@ namespace CoffeeShop.Models.ViewModels
 {
     public class RegisterViewModel
     {
+
         [Required]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
