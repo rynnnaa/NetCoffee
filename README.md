@@ -2,7 +2,7 @@
 
 We are a local Seattle coffee shop, we sell a variety of different coffee. 
 
-#Website
+# Website
 https://netcoffeeshop.azurewebsites.net/
 
 # Products
