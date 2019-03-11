@@ -50,9 +50,6 @@ namespace CoffeeShop
                 options.AddPolicy("FromWashington", policy => policy.Requirements.Add(new WashingtonianHandler(true)));
             });
 
-
-
-
             services.AddAuthentication().AddMicrosoftAccount(microsoftOptions =>
              {
                  microsoftOptions.ClientId = Configuration["Authentication:Microsoft:ApplicationId"];
