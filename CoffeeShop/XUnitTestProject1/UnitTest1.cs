@@ -532,12 +532,5 @@ namespace XUnitTestProject1
             Assert.Equal("latte", rvm.FavoriteCoffee);
         }
 
-
-
-
-
-
-
-
     }
 }
