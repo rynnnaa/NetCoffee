@@ -18,7 +18,7 @@ namespace CoffeeShop.Controllers
         /// Constructor that grabs are db context. 
         /// </summary>
         /// <param name="context"></param>
-        public ShoppingController(IInventory context)
+        public ShoppingController(IInventory context) 
         {
             _context = context;
         }
@@ -29,7 +29,7 @@ namespace CoffeeShop.Controllers
         public async Task<IActionResult> Index()
         {
 
-           var all = await _context.GetAllCoffee();
+            var all = await _context.GetAllCoffee();
             return View(all);
         }
         /// <summary>
@@ -39,12 +39,11 @@ namespace CoffeeShop.Controllers
         /// <returns>Detils for one Coffee</returns>
         public async Task<IActionResult> Details(int id)
         {
-            var coffee = await _context.GetCoffee();
+            var coffee = await _context.GetCoffee(id);
             if (coffee == null)
             {
                 return NotFound();
             }
-
             return View(coffee);
         }
         /// <summary>
@@ -163,7 +162,7 @@ namespace CoffeeShop.Controllers
         }
 
         /// <summary>
-        /// Checks to see if amenity exists
+        /// Checks to see if  exists
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>

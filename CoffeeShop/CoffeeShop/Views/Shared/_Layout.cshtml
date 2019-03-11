@@ -25,24 +25,25 @@
 <body>
     <nav class="blue-grey darken-4">
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo">NET Coffee</a>
+            <a asp-controller="Home" asp-action="Index" class="brand-logo left-align">NET Coffee</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
-                <li><a asp-action="../Home/Index">Home</a></li>
+                @await Component.InvokeAsync("ShoppingCartSummary")
 
                 @if (SignInManager.IsSignedIn(User))
                 {
-                    <li><a href="../Account/Logout">Logout</a></li>
                     <li><a href="#">About</a></li>
-                    <li><a href="#">Shop</a></li>
+                    <li><a href="/Shopping">Shop</a></li>
                     <li><a href="#">Contact</a></li>
+                    <li> Welcome, @User.Claims.First(name => name.Type == "FullName").Value</li>
+                    <li><a href="../Account/Logout">Logout</a></li>
                 }
                 else
                 {
                     <li><a href="/Account/Register">Register</a></li>
                     <li><a href="/Account/Login">Login</a></li>
                     <li><a href="#">About</a></li>
-                    <li><a href="#">Shop</a></li>
+                    <li><a href="/Shopping">Shop</a></li>
                     <li><a href="#">Contact</a></li>
                 }
             </ul>
@@ -52,7 +53,7 @@
     <ul class="sidenav" id="mobile-demo">
         <li><a href="#">Home</a></li>
         <li><a href="#">About</a></li>
-        <li><a href="#">Shop</a></li>
+        <li><a href="Shopping">Shop</a></li>
         <li><a href="#">Contact</a></li>
         <li><a asp-action="/Account/Register">Register</a></li>
         <li><a asp-action="/Account/Login">Login</a></li>

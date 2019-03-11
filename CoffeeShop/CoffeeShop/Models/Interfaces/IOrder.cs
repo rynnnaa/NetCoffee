@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CoffeeShop.Models.ViewModels
+namespace CoffeeShop.Models.Interfaces
 {
-    public class WashingtonianRequirement
+    public interface IOrder
     {
+        Task CreateOrder(Order order);
     }
 }

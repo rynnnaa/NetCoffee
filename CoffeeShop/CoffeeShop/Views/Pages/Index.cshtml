@@ -1,0 +1,19 @@
+﻿@page
+@using CoffeeShop.Models.Interfaces
+
+@inject IInventory CoffeeManager
+
+@{
+    var coffee = await CoffeeManager.GetAllCoffee();
+}
+
+@foreach (var item in coffee)
+{
+    <h3>@item.Name</h3>
+    <p>@item.Price</p>
+
+    <a asp-page="/Admin/Index" asp-route-id="@item.ID">@item.Name</a>
+}
+
+<h3><a asp-page="/Admin/Manage">Add a new coffee</a></h3>
+}

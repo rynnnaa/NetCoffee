@@ -12,6 +12,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -36,7 +38,7 @@ namespace CoffeeShop
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
-
+                
             services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(Configuration["ConnectionStrings:IdentityProductionConnection"]));
 
@@ -45,11 +47,33 @@ namespace CoffeeShop
 
             services.AddAuthorization(options =>
             {
-                options.AddPolicy("FromWashington", policy => policy.Requirements.Add(new WashingtonianRequirement("WA")));
+                options.AddPolicy("FromWashington", policy => policy.Requirements.Add(new WashingtonianHandler(true)));
             });
+
+            services.AddAuthentication().AddMicrosoftAccount(microsoftOptions =>
+             {
+                 microsoftOptions.ClientId = Configuration["Authentication:Microsoft:ApplicationId"];
+                 microsoftOptions.ClientSecret = Configuration["Authentication:Microsoft:Password"];
+             });
 
             services.AddScoped<IAuthorizationHandler, WashingtonianRequirement>();
             services.AddScoped<IInventory, CoffeeManager>();
+            services.AddScoped<IOrder, OrderManager>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped(s => ShoppingCart.GetCart(s));
+
+            services.AddScoped<IEmailSender, EmailSender>();
+            
+
+
+            services.AddMemoryCache();
+            services.AddSession();
+
+            services.AddAuthentication().AddFacebook(facebookOptions =>
+            {
+                facebookOptions.AppId = Configuration["Authentication:Facebook:AppId"];
+                facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -64,7 +88,7 @@ namespace CoffeeShop
             
 
             app.UseStaticFiles();
-
+            app.UseSession();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
