@@ -1,6 +1,7 @@
 using CoffeeShop.Data;
 using CoffeeShop.Models;
 using CoffeeShop.Models.Services;
+using CoffeeShop.Models.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
@@ -18,6 +19,7 @@ namespace XUnitTestProject1
 
             Assert.Equal(1, coffee.ID);
         }
+        
 
         [Fact]
         public void CanSetCoffeeID()
@@ -324,5 +326,212 @@ namespace XUnitTestProject1
                 Assert.False(result);
             }
         }
+
+        [Fact]
+        public async void CanReadCoffee()
+        {
+            DbContextOptions<CoffeeShopDbContext> options = new DbContextOptionsBuilder<CoffeeShopDbContext>().UseInMemoryDatabase("CanCreateCoffee").Options;
+            using (CoffeeShopDbContext context = new CoffeeShopDbContext(options))
+            {
+
+                Coffee coffee = new Coffee();
+                coffee.ID = 1;
+                coffee.Name = "latte";
+                coffee.Price = 2;
+                coffee.Description = "tasty";
+                coffee.URL = "www.coffee.com";
+
+                CoffeeManager coffeeManager = new CoffeeManager(context);
+
+                await coffeeManager.CreateCoffee(coffee);
+                await coffeeManager.GetCoffee(coffee.ID);
+
+                var result = context.Coffee.FirstOrDefault(c => c.ID == coffee.ID);
+
+                Assert.Equal(coffee, result);
+            }
+        }
+
+        [Fact]
+        public async void CanUpdateCoffee()
+        {
+            DbContextOptions<CoffeeShopDbContext> options = new DbContextOptionsBuilder<CoffeeShopDbContext>().UseInMemoryDatabase("CanCreateCoffee").Options;
+            using (CoffeeShopDbContext context = new CoffeeShopDbContext(options))
+            {
+
+                Coffee coffee = new Coffee();
+                coffee.ID = 1;
+                coffee.Name = "latte";
+                coffee.Price = 2;
+                coffee.Description = "tasty";
+                coffee.URL = "www.coffee.com";
+
+                CoffeeManager coffeeManager = new CoffeeManager(context);
+
+                await coffeeManager.CreateCoffee(coffee);
+                await coffeeManager.DeleteCoffee(1);
+
+                var result = context.Coffee.Any(c => c.ID == 1);
+
+                Assert.False(result);
+            }
+        }
+
+        [Fact]
+        public void CoffeeExists()
+        {
+            DbContextOptions<CoffeeShopDbContext> options = new DbContextOptionsBuilder<CoffeeShopDbContext>().UseInMemoryDatabase("CanCreateCoffee").Options;
+            using (CoffeeShopDbContext context = new CoffeeShopDbContext(options))
+            {
+                Coffee coffee = new Coffee();
+                coffee.ID = 1;
+                coffee.Name = "latte";
+                coffee.Price = 2;
+                coffee.Description = "tasty";
+                coffee.URL = "www.coffee.com";
+
+                CoffeeManager coffeeManager = new CoffeeManager(context);
+
+                coffeeManager.CoffeeExists(1);
+
+                var result = context.Coffee.Any(c => c.ID == 1);
+
+                Assert.False(result);
+            }
+        }
+
+        [Fact]
+        public void CanGetLoginEmail()
+        {
+            LoginViewModel loginViewModel= new LoginViewModel();
+            loginViewModel.Email = "coffee@hotmail.com";
+
+            Assert.Equal("coffee@hotmail.com", loginViewModel.Email);
+        }
+
+        [Fact]
+        public void CanSetLoginEmail()
+        {
+            LoginViewModel loginViewModel = new LoginViewModel();
+            loginViewModel.Email = "latte@hotmail.com";
+            loginViewModel.Email = "coffee@hotmail.com";
+
+            Assert.Equal("coffee@hotmail.com", loginViewModel.Email);
+        }
+
+        [Fact]
+        public void CanGetLoginPassword()
+        {
+            LoginViewModel loginViewModel = new LoginViewModel();
+            loginViewModel.Password = "latte123";
+
+            Assert.Equal("latte123", loginViewModel.Password);
+        }
+
+        [Fact]
+        public void CanSetLoginPassword()
+        {
+            LoginViewModel loginViewModel = new LoginViewModel();
+            loginViewModel.Password = "123latte";
+            loginViewModel.Password = "latte123";
+
+            Assert.Equal("latte123", loginViewModel.Password);
+        }
+
+        [Fact]
+        public void CanGetShoppingCart()
+        {
+            ShoppingCartViewModel cartvm = new ShoppingCartViewModel();
+            cartvm.ShoppingCartTotal = 100;
+
+            Assert.Equal(100, cartvm.ShoppingCartTotal);
+        }
+
+        [Fact]
+        public void CanSetShoppingCart()
+        {
+            ShoppingCartViewModel cartvm = new ShoppingCartViewModel();
+            cartvm.ShoppingCartTotal = 101;
+            cartvm.ShoppingCartTotal = 100;
+
+            Assert.Equal(100, cartvm.ShoppingCartTotal);
+        }
+
+        [Fact]
+        public void CanGetViewModelFirstName()
+        {
+            RegisterViewModel rvm = new RegisterViewModel();
+            rvm.FirstName = "ryna";
+
+            Assert.Equal("ryna", rvm.FirstName);
+        }
+
+        [Fact]
+        public void CanSetViewModelFirstName()
+        {
+            RegisterViewModel rvm = new RegisterViewModel();
+            rvm.FirstName = "ray";
+            rvm.FirstName = "ryna";
+
+            Assert.Equal("ryna", rvm.FirstName);
+        }
+
+        [Fact]
+        public void CanGetViewModeLastName()
+        {
+            RegisterViewModel rvm = new RegisterViewModel();
+            rvm.LastName = "ryna";
+
+            Assert.Equal("ryna", rvm.FirstName);
+        }
+
+        [Fact]
+        public void CanSetViewModelLastName()
+        {
+            RegisterViewModel rvm = new RegisterViewModel();
+            rvm.LastName = "luther";
+            rvm.FirstName = "ryna";
+
+            Assert.Equal("ryna", rvm.FirstName);
+        }
+
+        [Fact]
+        public void CanGetViewModelPassword()
+        {
+            RegisterViewModel rvm = new RegisterViewModel();
+            rvm.Password = "ryna";
+
+            Assert.Equal("ryna", rvm.Password);
+        }
+
+        [Fact]
+        public void CanSetViewModelPassword()
+        {
+            RegisterViewModel rvm = new RegisterViewModel();
+            rvm.Password = "123";
+            rvm.Password = "ryna";
+
+            Assert.Equal("ryna", rvm.Password);
+        }
+
+        [Fact]
+        public void CanGetViewModelFavoriteCoffee()
+        {
+            RegisterViewModel rvm = new RegisterViewModel();
+            rvm.FavoriteCoffee = "latte";
+
+            Assert.Equal("latte", rvm.FavoriteCoffee);
+        }
+
+        [Fact]
+        public void CanSetViewModelFavoriteCoffee()
+        {
+            RegisterViewModel rvm = new RegisterViewModel();
+            rvm.FavoriteCoffee = "espresso";
+            rvm.FavoriteCoffee = "latte";
+
+            Assert.Equal("latte", rvm.FavoriteCoffee);
+        }
+
     }
 }

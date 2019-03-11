@@ -17,7 +17,6 @@ namespace CoffeeShop.Models.Services
 
         public object ModelState { get; private set; }
 
-        public IEnumerable<Coffee> Coffee { get; set; }
 
         public CoffeeManager(CoffeeShopDbContext context)
         {
@@ -116,7 +115,6 @@ namespace CoffeeShop.Models.Services
             return coffee;
         }
 
-
         public async Task DeleteAsync(int id)
         {
             Coffee coffee = await _context.Coffee.FindAsync(id);
@@ -125,6 +123,24 @@ namespace CoffeeShop.Models.Services
                 _context.Remove(coffee);
                 await _context.SaveChangesAsync();
             }
+        }
+        /// <summary>
+        /// Checks if coffee exists
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns> whether coffee exists or not</returns>
+        public bool CoffeeExists(int id)
+        {
+            return _context.Coffee.Any(c => c.ID == id);
+        }
+
+    /// <summary>
+    /// Gets coffee
+    /// </summary>
+    /// <returns>coffee</returns>
+        public async Task<IEnumerable<Coffee>> GetCoffeeAsync()
+        {
+            return await _context.Coffee.ToListAsync();
         }
     }
 }
