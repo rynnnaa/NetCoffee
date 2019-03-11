@@ -325,7 +325,7 @@ namespace XUnitTestProject1
             }
         }
 
-            [Fact]
+        [Fact]
         public async void CanReadCoffee()
         {
             DbContextOptions<CoffeeShopDbContext> options = new DbContextOptionsBuilder<CoffeeShopDbContext>().UseInMemoryDatabase("CanCreateCoffee").Options;
@@ -349,5 +349,54 @@ namespace XUnitTestProject1
                 Assert.Equal(coffee, result);
             }
         }
+
+        [Fact]
+        public async void CanUpdateCoffee()
+        {
+            DbContextOptions<CoffeeShopDbContext> options = new DbContextOptionsBuilder<CoffeeShopDbContext>().UseInMemoryDatabase("CanCreateCoffee").Options;
+            using (CoffeeShopDbContext context = new CoffeeShopDbContext(options))
+            {
+
+                Coffee coffee = new Coffee();
+                coffee.ID = 1;
+                coffee.Name = "latte";
+                coffee.Price = 2;
+                coffee.Description = "tasty";
+                coffee.URL = "www.coffee.com";
+
+                CoffeeManager coffeeManager = new CoffeeManager(context);
+
+                await coffeeManager.CreateCoffee(coffee);
+                await coffeeManager.DeleteCoffee(1);
+
+                var result = context.Coffee.Any(c => c.ID == 1);
+
+                Assert.False(result);
+            }
+        }
+
+        [Fact]
+        public void CoffeeExists()
+        {
+            DbContextOptions<CoffeeShopDbContext> options = new DbContextOptionsBuilder<CoffeeShopDbContext>().UseInMemoryDatabase("CanCreateCoffee").Options;
+            using (CoffeeShopDbContext context = new CoffeeShopDbContext(options))
+            {
+                Coffee coffee = new Coffee();
+                coffee.ID = 1;
+                coffee.Name = "latte";
+                coffee.Price = 2;
+                coffee.Description = "tasty";
+                coffee.URL = "www.coffee.com";
+
+                CoffeeManager coffeeManager = new CoffeeManager(context);
+
+                coffeeManager.CoffeeExists(1);
+
+                var result = context.Coffee.Any(c => c.ID == 1);
+
+                Assert.False(result);
+            }
+        }
+
     }
 }
