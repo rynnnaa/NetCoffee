@@ -13,7 +13,7 @@ namespace CoffeeShop.Models.Services
     public class CoffeeManager : IInventory
     {
         private readonly CoffeeShopDbContext _context;
-        
+
 
         public object ModelState { get; private set; }
 
@@ -34,7 +34,7 @@ namespace CoffeeShop.Models.Services
             _context.Coffee.Add(coffee);
             await _context.SaveChangesAsync();
         }
- 
+
         /// <summary>
         /// Grabs ID of specific coffee object and deletes it.\
         /// </summary>
@@ -89,7 +89,7 @@ namespace CoffeeShop.Models.Services
 
         }
 
-        
+
         /// <summary>
         /// Returns a coffee object
         /// </summary>
@@ -116,19 +116,6 @@ namespace CoffeeShop.Models.Services
             return coffee;
         }
 
-        public async Task SaveAsync(Coffee coffee)
-        {
-            if (await _context.Coffee.FirstOrDefaultAsync(m => m.ID == coffee.ID) == null)
-            {
-                _context.Coffee.Add(coffee);
-            }
-            else
-            {
-                _context.Coffee.Update(coffee);
-            }
-            // save the database
-            await _context.SaveChangesAsync();
-        }
 
         public async Task DeleteAsync(int id)
         {
@@ -140,3 +127,4 @@ namespace CoffeeShop.Models.Services
             }
         }
     }
+}

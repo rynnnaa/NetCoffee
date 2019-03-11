@@ -26,13 +26,13 @@ namespace CoffeeShop.Views.Pages.Admin
 
         public async Task OnGet()
         {
-            Coffee coffee = await _coffee.FindCoffee(ID.GetValueOrDefault()) ?? new Coffee();
+            Coffee coffee = await _coffee.GetCoffee(ID.GetValueOrDefault()) ?? new Coffee();
         }
 
         public async Task<IActionResult> OnPost()
         {
             // Make the call to our DB with our ID.
-            var cof = await _coffee.FindCoffee(ID.GetValueOrDefault()) ?? new Coffee();
+            var cof = await _coffee.GetCoffee(ID.GetValueOrDefault()) ?? new Coffee();
 
             // set the data from the database to the new data from Restaurant/user input
             cof.Name = coffee.Name;
@@ -40,7 +40,7 @@ namespace CoffeeShop.Views.Pages.Admin
             cof.Price = coffee.Price;
 
             // Save the restaurant in the database
-            await _coffee.SaveAsync(cof);
+         
 
             return RedirectToPage("/CoffeeShop/Index", new { id = cof.ID });
         }

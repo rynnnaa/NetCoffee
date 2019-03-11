@@ -26,7 +26,7 @@ namespace CoffeeShop.Views.Pages.Admin
 
         public async Task OnGet()
         {
-            Inventory = await _inventory.FindCoffee(ID);
+             var inventory = await _inventory.GetCoffee(ID);
         }
     }
 }
